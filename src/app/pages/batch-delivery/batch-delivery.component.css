@@ -1,0 +1,53 @@
+aside {
+  padding: 20px;
+  width: 80vw;
+}
+
+section {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 30px;
+}
+
+button {
+  padding: 0 30px;
+  font-weight: bold;
+  border-radius: 2px;
+}
+
+input {
+  width: 300px;
+  padding: 10px;
+  border-radius: 2px;
+  border: 1px solid black;
+}
+
+div.search, div.clickables {
+  display: flex;
+  gap: 20px;
+}
+
+.search-btn {
+  border: 2px solid #423BFF;
+  color: #423BFF;
+  background-color: transparent;
+  border-radius: 2px;
+}
+
+.add-btn {
+  border: 2px solid #423BFF;
+  background-color: #423BFF;
+  color: #f5f5f7;
+}
+
+.delete-btn {
+  border: 2px solid #E51D1D;
+  background-color: #E51D1D;
+  color: #f5f5f7;
+}
+
+table {
+   width: 100%;
+   margin-top: 50px;
+   border: 1px solid black;
+}
