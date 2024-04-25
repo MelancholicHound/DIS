@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { RouterOutlet, RouterLink, RouterLinkActive } from '@angular/router';
 
 import { AccountComponent } from './components/account/account.component';
 import { CardComponent } from './components/card/card.component';
@@ -19,6 +19,8 @@ import { RegisterComponent } from './sections/register/register.component';
   standalone: true,
   imports: [
     RouterOutlet,
+    RouterLink,
+    RouterLinkActive,
     AccountComponent,
     CardComponent,
     NavigationComponent,

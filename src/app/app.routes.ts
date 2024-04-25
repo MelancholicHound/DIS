@@ -10,7 +10,6 @@ import { SuppliersComponent } from './pages/suppliers/suppliers.component';
 import { AccountListsComponent } from './pages/account-lists/account-lists.component';
 
 export const routes: Routes = [
-  { path : '' , redirectTo : '/login' , pathMatch : 'full' },
   { path : 'login' , component : LoginComponent },
   { path : 'register' , component : RegisterComponent },
   { path : 'dashboard' , component : DashboardComponent },

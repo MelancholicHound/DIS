@@ -1,0 +1,7 @@
+body {
+    display: flex;
+}
+router-outlet {
+  width: auto;
+  height: 100vh;
+}
