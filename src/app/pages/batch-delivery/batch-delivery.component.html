@@ -6,7 +6,7 @@
     <button type="submit" class="search-btn">Search</button>
   </div>
   <div class="clickables">
-    <button type="button" class="add-btn">Add</button>
+    <button type="button" class="add-btn" data-bs-target="#addBatchModal" data-bs-toggle="modal">Add</button>
     <button type="button" class="delete-btn">Delete</button>
   </div>
  </section>
@@ -31,3 +31,22 @@
   <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
  </table>
 </aside>
+
+<div class="modal" id="addBatchModal" tabindex="-1" aria-labelledby="addBatchModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="addBatchModalLabel">Add Batch</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <section>
+          <p>Batch Number:</p>
+        </section>
+      </div>
+      <div class="modal-footer">
+        <button type="submit">Create</button>
+      </div>
+    </div>
+  </div>
+</div>
