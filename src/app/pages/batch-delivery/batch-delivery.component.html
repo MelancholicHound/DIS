@@ -40,9 +40,23 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <section>
-          <p>Batch Number:</p>
-        </section>
+        <form action="">
+          <p>Batch Number: {{yearTracker}}-{{paddedNumber}}</p>
+          <p>Supplier:</p>
+            <select name="devices" id="devices">
+              <option value={{device}} *ngFor="let device of devices">{{device}}</option>
+            </select>
+          <p>Service Center:</p>
+          <input type="text" placeholder="Enter Service Center">
+          <p>Date Delivered:</p>
+          <input type="date" name="" id="">
+          <p>Date Tested:</p>
+          <input type="date" name="" id="">
+          <p>Valid Until:</p>
+          <input type="date" name="" id="">
+          <p>Not Tested Yet</p>
+          <input type="radio" name="" id="">
+        </form>
       </div>
       <div class="modal-footer">
         <button type="submit">Create</button>

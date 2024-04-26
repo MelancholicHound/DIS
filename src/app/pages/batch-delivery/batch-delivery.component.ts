@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatTableModule } from '@angular/material/table';
+import { NgFor } from '@angular/common';
 
 export interface Batch {
   id : number;
@@ -20,13 +21,23 @@ const SampleData: Batch[] = [
   selector: 'app-batch-delivery',
   standalone: true,
   imports: [
-    MatTableModule
+    MatTableModule,
+    NgFor
   ],
   templateUrl: './batch-delivery.component.html',
   styleUrl: './batch-delivery.component.css'
 })
 
-export class BatchDeliveryComponent {
+export class BatchDeliveryComponent implements OnInit {
   displayedColumns: string [] = [ 'batchId' , 'supplier' , 'dateDelivered' , 'validUntil'];
   dataSource = [...SampleData];
+  public devices: string [] = [ 'Computer' , 'Laptop' , 'Tablet' , 'Printer' , 'Router' , 'Scanner' , 'All-In-One' ];
+  date = new Date();
+  public yearTracker = this.date.getFullYear();
+  count: number = this.dataSource.length + 1;
+  public paddedNumber = String(this.count).padStart(3, '0');
+
+  ngOnInit(): void {
+
+  }
 }
