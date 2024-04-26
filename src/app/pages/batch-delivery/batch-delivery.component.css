@@ -51,3 +51,29 @@ table {
    margin-top: 50px;
    border: 1px solid black;
 }
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+span {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+select {
+    width: 50%;
+    height: 35px;
+    padding: 3px;
+    padding-right: 20px;
+}
+
+span input {
+    height: 35px;
+}
+
+p {
+    margin: 0;
+}

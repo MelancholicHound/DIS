@@ -40,22 +40,38 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form action="" sformGroup="batchForm" novalidate>
+        <form action="" formGroup="batchForm" novalidate>
           <p>Batch Number: {{yearTracker}}-{{paddedNumber}}</p>
-          <p>Supplier:</p>
+          <span>
+            <p>Supplier:</p>
             <select name="devices" id="devices">
               <option value="" *ngFor="let device of devices">{{device}}</option>
             </select>
-          <p>Service Center:</p>
-          <input type="text" class="form-control" placeholder="Enter Service Center">
-          <p>Date Delivered:</p>
-          <input type="date" name="" id="">
-          <p>Date Tested:</p>
-          <input type="date" name="" id="">
-          <p>Valid Until:</p>
-          <input type="date" name="" id="">
-          <p>Not Tested Yet</p>
-          <input type="radio" name="" id="">
+          </span>
+          <span>
+            <p>Service Center:</p>
+            <input type="text" class="form-control" placeholder="Enter Service Center">
+          </span>
+          <div class="dates">
+            <span>
+              <p>Date Delivered:</p>
+              <input type="date" name="" id="">
+            </span>
+            <span>
+              <p>Date Tested:</p>
+              <input type="date" name="" id="">
+            </span>
+          </div>
+          <div class="expired">
+            <span>
+              <p>Valid Until:</p>
+              <input type="date" name="" id="">
+            </span>
+            <span>
+              <p>Not Tested Yet</p>
+              <input type="radio" name="" id="">
+            </span>
+          </div>
         </form>
       </div>
       <div class="modal-footer">
