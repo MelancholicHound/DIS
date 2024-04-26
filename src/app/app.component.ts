@@ -14,6 +14,10 @@ import { SuppliersComponent } from './pages/suppliers/suppliers.component';
 import { LoginComponent } from './sections/login/login.component';
 import { RegisterComponent } from './sections/register/register.component';
 
+import { ComputerComponent } from './pages/devices/computer/computer.component';
+import { LaptopComponent } from './pages/devices/laptop/laptop.component';
+import { TabletComponent } from './pages/devices/tablet/tablet.component';
+
 @Component({
   selector: 'app-root',
   standalone: true,
@@ -30,7 +34,10 @@ import { RegisterComponent } from './sections/register/register.component';
     DashboardComponent,
     SuppliersComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    ComputerComponent,
+    LaptopComponent,
+    TabletComponent
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'

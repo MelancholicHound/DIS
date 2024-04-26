@@ -40,14 +40,14 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form action="">
+        <form action="" sformGroup="batchForm" novalidate>
           <p>Batch Number: {{yearTracker}}-{{paddedNumber}}</p>
           <p>Supplier:</p>
             <select name="devices" id="devices">
-              <option value={{device}} *ngFor="let device of devices">{{device}}</option>
+              <option value="" *ngFor="let device of devices">{{device}}</option>
             </select>
           <p>Service Center:</p>
-          <input type="text" placeholder="Enter Service Center">
+          <input type="text" class="form-control" placeholder="Enter Service Center">
           <p>Date Delivered:</p>
           <input type="date" name="" id="">
           <p>Date Tested:</p>

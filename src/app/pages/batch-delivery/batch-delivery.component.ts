@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatTableModule } from '@angular/material/table';
-import { NgFor } from '@angular/common';
+import { NgFor, NgClass } from '@angular/common';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 export interface Batch {
   id : number;
@@ -37,7 +38,19 @@ export class BatchDeliveryComponent implements OnInit {
   count: number = this.dataSource.length + 1;
   public paddedNumber = String(this.count).padStart(3, '0');
 
-  ngOnInit(): void {
+  batchForm!: FormGroup;
 
+  ngOnInit(): void {
+    this.batchForm = this.createBatchForm();
   }
+
+  createBatchForm(): FormGroup {
+    return new FormGroup({
+      supplier: new FormControl("", [Validators.required]),
+      dateDelivered: new FormControl("", [Validators.required]),
+      validUntil: new FormControl("", [Validators.required]),
+      dateTested: new FormControl("")
+    });
+  }
+
 }
