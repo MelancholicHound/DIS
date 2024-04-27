@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterOutlet, RouterLink, RouterLinkActive } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AccountComponent } from './components/account/account.component';
 import { CardComponent } from './components/card/card.component';
@@ -37,7 +38,8 @@ import { TabletComponent } from './pages/devices/tablet/tablet.component';
     RegisterComponent,
     ComputerComponent,
     LaptopComponent,
-    TabletComponent
+    TabletComponent,
+    HttpClientModule
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'

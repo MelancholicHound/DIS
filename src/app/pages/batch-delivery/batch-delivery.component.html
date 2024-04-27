@@ -40,32 +40,32 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form action="" formGroup="batchForm" novalidate>
+        <form class="add-batch" action="" [formGroup]="batchForm" novalidate>
           <p>Batch Number: {{yearTracker}}-{{paddedNumber}}</p>
           <span>
             <p>Supplier:</p>
-            <input type="text" placeholder="Enter Supplier">
+            <input type="text" class="form-control" formControlName="supplier" placeholder="Enter Supplier">
           </span>
           <span>
             <p>Service Center:</p>
-            <input type="text" class="form-control" placeholder="Enter Service Center">
+            <input type="text" class="form-control" formControlName="serviceCenter" placeholder="Enter Service Center">
           </span>
           <div class="dates">
             <span>
               <p>Date Delivered:</p>
-              <input type="date" name="" id="">
+              <input type="date" class="form-control" formControlName="dateDelivered" name="dateDelived" id="date-delivered">
             </span>
             <span>
-              <p>Date Tested:</p>
-              <input type="date" name="" id="">
+              <p>Valid Until:</p>
+              <input type="date" class="form-control" formControlName="validUntil" name="" id="">
             </span>
           </div>
           <div class="expired">
             <span>
-              <p>Valid Until:</p>
+              <p>Date Tested:</p>
               <span class="tested">
                 <div class="date-tested">
-                  <input type="date" name="" id="">
+                  <input type="date" class="form-control" formControlName="dateTested" name="" id="">
                 </div>
                 <div class="not-tested">
                   <input type="radio" name="" id="">
@@ -77,7 +77,7 @@
         </form>
       </div>
       <div class="modal-footer">
-        <button class="submit-btn" type="submit">Create</button>
+        <button class="submit-btn" type="submit" (click)="sampleOutput()">Create</button>
       </div>
     </div>
   </div>
