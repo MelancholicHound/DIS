@@ -1,10 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { MatTableModule } from '@angular/material/table';
 import { NgFor, NgClass } from '@angular/common';
 import { FormGroup, Validators, FormBuilder, ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, RouterOutlet } from '@angular/router';
 
 import { AuthService } from '../../tools/services/auth.service';
+
+import { AddBatchComponent } from '../add-batch/add-batch.component';
 
 @Component({
   selector: 'app-batch-delivery',
@@ -13,13 +15,17 @@ import { AuthService } from '../../tools/services/auth.service';
     MatTableModule,
     NgFor,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    AddBatchComponent,
+    RouterOutlet
   ],
   templateUrl: './batch-delivery.component.html',
   styleUrl: './batch-delivery.component.css'
 })
 
 export class BatchDeliveryComponent implements OnInit {
+  @Output() valueEmitter: EventEmitter<any[]> = new EventEmitter<any[]>;
+
   displayedColumns: string [] = [ 'batchId' , 'supplier' , 'dateDelivered' , 'validUntil'];
 
   batchForm!: FormGroup;
@@ -47,7 +53,8 @@ export class BatchDeliveryComponent implements OnInit {
   }
 
   sampleOutput(): void {
-    this.router.navigate(['computer']);
+    this.router.navigate(['/batch-delivery/add-batch']);
+    this.valueEmitter.emit(this.batchForm.value);
   }
 
   batchValid() {

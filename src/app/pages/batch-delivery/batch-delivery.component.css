@@ -124,3 +124,7 @@ p {
 button.submit-btn:disabled {
   color: #808080;
 }
+
+app-add-batch {
+  display: none;
+}

@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-batch',
@@ -8,5 +9,11 @@ import { Component } from '@angular/core';
   styleUrl: './add-batch.component.css'
 })
 export class AddBatchComponent {
+  @Input() batch: any;
 
+  constructor(private router : Router) {}
+
+  hasValue() {
+    this.router.navigate(['/batch-delivery']);
+  }
 }
