@@ -1,11 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { MatTableModule } from '@angular/material/table';
 import { NgFor, NgClass } from '@angular/common';
-import { FormGroup, Validators, FormBuilder } from '@angular/forms';
+import { FormGroup, Validators, FormBuilder, ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
 
 import { AuthService } from '../../tools/services/auth.service';
-
-import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-batch-delivery',
@@ -25,7 +24,7 @@ export class BatchDeliveryComponent implements OnInit {
 
   batchForm!: FormGroup;
 
-  constructor(private authService : AuthService, private _builder : FormBuilder) {
+  constructor(private authService : AuthService, private _builder : FormBuilder, private router : Router) {
     this.batchForm = this._builder.group({
       supplier: ['', Validators.required],
       serviceCenter: ['', Validators.required],
@@ -48,6 +47,10 @@ export class BatchDeliveryComponent implements OnInit {
   }
 
   sampleOutput(): void {
+    this.router.navigate(['computer']);
+  }
 
+  batchValid() {
+    return this.batchForm.valid;
   }
 }

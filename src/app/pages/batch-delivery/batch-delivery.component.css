@@ -121,3 +121,6 @@ p {
   padding: 10px 70px;
 }
 
+button.submit-btn:disabled {
+  color: #808080;
+}

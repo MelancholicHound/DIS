@@ -77,7 +77,7 @@
         </form>
       </div>
       <div class="modal-footer">
-        <button class="submit-btn" type="submit" (click)="sampleOutput()">Create</button>
+        <button class="submit-btn" type="submit" [disabled]="!batchValid()" data-bs-dismiss="modal" (click)="sampleOutput()">Create</button>
       </div>
     </div>
   </div>
