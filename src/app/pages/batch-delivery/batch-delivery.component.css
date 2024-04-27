@@ -106,3 +106,18 @@ input[type='radio'] {
 p {
     margin: 0;
 }
+
+.modal-footer {
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.submit-btn {
+  border: none;
+  background-color: #3519FF;
+  color: #f5f5f7;
+  padding: 10px 70px;
+}
+

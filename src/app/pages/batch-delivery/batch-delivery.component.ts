@@ -3,20 +3,7 @@ import { MatTableModule } from '@angular/material/table';
 import { NgFor, NgClass } from '@angular/common';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
-export interface Batch {
-  id : number;
-  batchId : string;
-  supplier : string;
-  dateTested : string;
-  dateDelivered : string;
-  validUntil : string;
-}
-
-const SampleData: Batch[] = [
-  { id : 1 , batchId : '2024-001' , supplier : 'Vera Equinox' , dateTested : '2024-01-01' , dateDelivered : '2024-01-01', validUntil : '2024-01-01' },
-  { id : 2 , batchId : '2024-002' , supplier : 'Denielle B' , dateTested : '01/01/2024' , dateDelivered : '01/01/2024' , validUntil : '2024-01-01' },
-  { id : 3 , batchId : '2024-003' , supplier : 'Francis B' , dateTested : '01/01/2024' , dateDelivered : '01/01/2024' , validUntil : '2024-01-01' },
-];
+import { AuthService } from '../../tools/services/auth.service';
 
 @Component({
   selector: 'app-batch-delivery',
@@ -31,8 +18,11 @@ const SampleData: Batch[] = [
 
 export class BatchDeliveryComponent implements OnInit {
   displayedColumns: string [] = [ 'batchId' , 'supplier' , 'dateDelivered' , 'validUntil'];
-  dataSource = [...SampleData];
-  public devices: string [] = [ 'Computer' , 'Laptop' , 'Tablet' , 'Printer' , 'Router' , 'Scanner' , 'All-In-One' ];
+
+  constructor(private authService : AuthService) { }
+
+  dataSource = [...this.authService.getSampleData()];
+
   date = new Date();
   public yearTracker = this.date.getFullYear();
   count: number = this.dataSource.length + 1;
