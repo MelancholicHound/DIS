@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, SimpleChanges, OnChanges } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -8,10 +8,16 @@ import { Router } from '@angular/router';
   templateUrl: './add-batch.component.html',
   styleUrl: './add-batch.component.css'
 })
-export class AddBatchComponent {
+export class AddBatchComponent implements OnChanges {
   @Input() batch: any;
 
+  batchReceived = [this.batch];
+
   constructor(private router : Router) {}
+
+  ngOnChanges(changes: SimpleChanges) {
+
+  }
 
   hasValue() {
     this.router.navigate(['/batch-delivery']);

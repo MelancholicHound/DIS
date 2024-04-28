@@ -74,16 +74,13 @@
               </span>
             </span>
           </div>
+
         </form>
       </div>
       <div class="modal-footer">
-        <button class="submit-btn" type="submit" [disabled]="!batchValid()" data-bs-dismiss="modal" (click)="sampleOutput()">Create</button>
+        <button class="submit-btn" type="submit" [disabled]="!batchValid()" data-bs-dismiss="modal" (click)="sendBatch()">Create</button>
       </div>
     </div>
   </div>
 </div>
 <app-add-batch [batch]="batchForm.value"></app-add-batch>
-
-<div>
-  <router-outlet></router-outlet>
-</div>
