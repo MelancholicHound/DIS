@@ -12,5 +12,12 @@ header, div.card, span {
 div.card {
   width: 100%;
   height: auto;
+  justify-content: space-between;
   padding: 20px;
+}
+
+table {
+  width: 100%;
+  margin-top: 50px;
+  border: 1px solid black;
 }
