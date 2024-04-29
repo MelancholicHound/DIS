@@ -20,11 +20,12 @@ export class AddBatchComponent implements OnInit {
   tempBatch: any;
 
   devices: any[] = [
-    {id: 1, device: 'COMPUTER', division: 'HOPSS', conns: 3 }
+    { device: 'COMPUTER', division: 'HOPSS', section: 'IMISS', conns: '3' },
+    { device: 'LAPTOP', division: 'HOPSS', section: 'IMISS', conns: '3' }
   ];
 
   dataSource = [...this.devices];
-  displayedColumns: string [] = ['Device', 'Division', 'Section', 'No. of Connections'];
+  displayedColumns: string [] = ['device', 'division', 'section', 'conns'];
 
   ngOnInit(): void {
      const fetchedBatch = this.authService.getTempBatch();
