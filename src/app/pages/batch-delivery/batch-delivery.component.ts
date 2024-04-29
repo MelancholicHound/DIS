@@ -1,12 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { MatTableModule } from '@angular/material/table';
-import { NgFor, NgClass } from '@angular/common';
+import { NgFor } from '@angular/common';
 import { FormGroup, Validators, FormBuilder, ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, RouterOutlet } from '@angular/router';
 
 import { AuthService } from '../../tools/services/auth.service';
-
-import { AddBatchComponent } from '../add-batch/add-batch.component';
 
 @Component({
   selector: 'app-batch-delivery',
@@ -16,7 +14,7 @@ import { AddBatchComponent } from '../add-batch/add-batch.component';
     NgFor,
     ReactiveFormsModule,
     FormsModule,
-    AddBatchComponent
+    RouterOutlet
   ],
   templateUrl: './batch-delivery.component.html',
   styleUrl: './batch-delivery.component.css'
@@ -46,8 +44,8 @@ export class BatchDeliveryComponent {
   public paddedNumber = String(this.count).padStart(3, '0');
 
   sendBatch() {
-    console.log(this.batchForm.value);
     this.router.navigate(['/batch-delivery/add-batch']);
+    this.authService.postTempBatch(this.batchForm.value);
   }
 
   batchValid() {

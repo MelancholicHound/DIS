@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 
 import { Batch } from '../models/Batch';
 
+import { ErrorHandlerService } from './error-handler.service';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -13,11 +15,19 @@ export class AuthService {
     { id : 3 , batchId : '2024-003' , supplier : 'Francis B' , dateTested : '01/01/2024' , dateDelivered : '01/01/2024' , validUntil : '2024-01-01' }
   ];
 
-  constructor() { }
+  private temp: Batch[] = [];
+
+  constructor(private errorHandler : ErrorHandlerService) { }
 
   getSampleData(): Batch[] {
     return this.sampleData;
   }
 
+  postTempBatch(batch: Batch){
+    this.temp.push(batch);
+  }
 
+  getTempBatch() {
+    return this.temp;
+  }
 }

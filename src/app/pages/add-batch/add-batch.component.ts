@@ -1,5 +1,6 @@
-import { Component, Input, SimpleChanges, OnChanges } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from '../../tools/services/auth.service';
 
 @Component({
   selector: 'app-add-batch',
@@ -8,18 +9,19 @@ import { Router } from '@angular/router';
   templateUrl: './add-batch.component.html',
   styleUrl: './add-batch.component.css'
 })
-export class AddBatchComponent implements OnChanges {
-  @Input() batch: any;
 
-  batchReceived = [this.batch];
+export class AddBatchComponent implements OnInit {
 
-  constructor(private router : Router) {}
+  constructor(private router : Router, private authService : AuthService) {}
 
-  ngOnChanges(changes: SimpleChanges) {
+  tempBatch: any;
 
+  ngOnInit(): void {
+     this.tempBatch = this.authService.getTempBatch();
+     console.log(this.tempBatch);
   }
 
   hasValue() {
-    this.router.navigate(['/batch-delivery']);
+    /* this.router.navigate(['/batch-delivery']); */
   }
 }
