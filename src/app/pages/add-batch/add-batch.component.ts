@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { SelectionModel } from '@angular/cdk/collections';
 import { Router } from '@angular/router';
-import { MatTableModule } from '@angular/material/table';
+import { MatTableModule, MatTableDataSource } from '@angular/material/table';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+
 import { AuthService } from '../../tools/services/auth.service';
 
 @Component({
@@ -20,8 +23,8 @@ export class AddBatchComponent implements OnInit {
   tempBatch: any;
 
   devices: any[] = [
-    { device: 'COMPUTER', division: 'HOPSS', section: 'IMISS', conns: '3' },
-    { device: 'LAPTOP', division: 'HOPSS', section: 'IMISS', conns: '3' }
+    { id: 1, device: 'COMPUTER', division: 'HOPSS', section: 'IMISS', conns: '3' },
+    { id: 1, device: 'LAPTOP', division: 'HOPSS', section: 'IMISS', conns: '3' }
   ];
 
   dataSource = [...this.devices];
