@@ -18,17 +18,11 @@ export const routes: Routes = [
   { path : 'login' , component : LoginComponent },
   { path : 'register' , component : RegisterComponent },
   { path : 'dashboard' , component : DashboardComponent },
-  { path : 'batch-delivery' , component : BatchDeliveryComponent,
-    children: [
-      { path : 'add-batch' , component : AddBatchComponent,
-        children: [
-          { path : 'computer' , component : ComputerComponent },
-          { path : 'laptop' , component : LaptopComponent },
-          { path : 'tablet' , component : TabletComponent }
-        ]
-       }
-    ]
-   },
+  { path : 'batch-delivery' , component : BatchDeliveryComponent },
+  { path : 'add-batch' , component : AddBatchComponent },
+  { path : 'computer' , component : ComputerComponent },
+  { path : 'laptop' , component : LaptopComponent },
+  { path : 'tablet' , component : TabletComponent },
   { path : 'computer-inventory' , component : ComputerInventoryComponent },
   { path : 'suppliers' , component : SuppliersComponent },
   { path : 'accounts' , component : AccountListsComponent },

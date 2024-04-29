@@ -1,2 +1,20 @@
-<p>add-batch works!</p>
-<button (click)="hasValue()">click</button>
+<aside>
+  <header>
+    <a href="/batch-delivery">Batch Delivery</a>
+    <p>Add Batch</p>
+  </header>
+  <div class="card">
+    <span>
+      <p>Batch Number:<!--  {{tempBatch.batchId}} --></p>
+      <p>Supplier: <!-- {{tempBatch.supplier}} --></p>
+    </span>
+    <span>
+      <button class="save-btn" type="button">
+        Save Batch
+      </button>
+      <button class="discard-btn" type="button">
+        Discard
+      </button>
+    </span>
+  </div>
+</aside>

@@ -1,0 +1,16 @@
+aside {
+  width: 80vw;
+  padding: 20px;
+}
+
+header, div.card, span {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+}
+
+div.card {
+  width: 100%;
+  height: auto;
+  padding: 20px;
+}

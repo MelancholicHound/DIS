@@ -17,11 +17,8 @@ export class AddBatchComponent implements OnInit {
   tempBatch: any;
 
   ngOnInit(): void {
-     this.tempBatch = this.authService.getTempBatch();
-     console.log(this.tempBatch);
+     const fetchedBatch = this.authService.getTempBatch();
+     this.tempBatch = fetchedBatch[0];
   }
 
-  hasValue() {
-    /* this.router.navigate(['/batch-delivery']); */
-  }
 }

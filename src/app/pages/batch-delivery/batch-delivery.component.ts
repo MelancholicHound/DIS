@@ -23,11 +23,14 @@ import { AuthService } from '../../tools/services/auth.service';
 export class BatchDeliveryComponent {
 
   displayedColumns: string [] = [ 'batchId' , 'supplier' , 'dateDelivered' , 'validUntil'];
+  date = new Date();
+  public yearTracker = this.date.getFullYear();
 
   batchForm!: FormGroup;
 
   constructor(private authService : AuthService, private _builder : FormBuilder, private router : Router) {
     this.batchForm = this._builder.group({
+      batchId: [`${this.yearTracker}-${this.paddedNumber}`],
       supplier: ['', Validators.required],
       serviceCenter: ['', Validators.required],
       dateDelivered: ['', Validators.required],
@@ -37,14 +40,11 @@ export class BatchDeliveryComponent {
   }
 
   dataSource = [...this.authService.getSampleData()];
-
-  date = new Date();
-  public yearTracker = this.date.getFullYear();
   count: number = this.dataSource.length + 1;
   public paddedNumber = String(this.count).padStart(3, '0');
 
   sendBatch() {
-    this.router.navigate(['/batch-delivery/add-batch']);
+    this.router.navigate(['/add-batch']);
     this.authService.postTempBatch(this.batchForm.value);
   }
 
