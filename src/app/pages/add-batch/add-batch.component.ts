@@ -6,11 +6,14 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 
 import { AuthService } from '../../tools/services/auth.service';
 
+import { Device } from '../../tools/models/Device';
+
 @Component({
   selector: 'app-add-batch',
   standalone: true,
   imports: [
-    MatTableModule
+    MatTableModule,
+    MatCheckboxModule
   ],
   templateUrl: './add-batch.component.html',
   styleUrl: './add-batch.component.css'
@@ -22,17 +25,35 @@ export class AddBatchComponent implements OnInit {
 
   tempBatch: any;
 
-  devices: any[] = [
-    { id: 1, device: 'COMPUTER', division: 'HOPSS', section: 'IMISS', conns: '3' },
-    { id: 1, device: 'LAPTOP', division: 'HOPSS', section: 'IMISS', conns: '3' }
-  ];
+  devices: Device[] = [];
 
-  dataSource = [...this.devices];
-  displayedColumns: string [] = ['device', 'division', 'section', 'conns'];
+  dataSource = new MatTableDataSource<Device>(this.devices);
+  selection= new SelectionModel<Device>(true, []);
+  displayedColumns: string [] = [ 'select', 'device', 'division', 'section', 'conns'];
 
   ngOnInit(): void {
      const fetchedBatch = this.authService.getTempBatch();
      this.tempBatch = fetchedBatch[0];
   }
 
+  isAllSelected() {
+    const numSelected = this.selection.selected.length;
+    const numRows = this.dataSource.data.length;
+    return numSelected === numRows;
+  }
+
+  toggleAllRows() {
+    if (this.isAllSelected()) {
+      this.selection.clear();
+      return;
+    }
+    this.selection.select(...this.dataSource.data);
+  }
+
+  checkboxLabel(row? : Device): string {
+    if (!row) {
+      return `${this.isAllSelected() ? 'deselect' : 'select'} all`;
+    }
+    return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.id + 1}`;
+  }
 }

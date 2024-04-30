@@ -18,27 +18,53 @@
     </span>
   </div>
   <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-    <ng-container>
-      <th mat-header-cell *matHeaderCellDef></th>
-      <td mat-cell *matCellDef="let element">{{element.device}}</td>
+
+    <!-- Checkbox Column -->
+    <ng-container matColumnDef="select">
+      <th mat-header-cell *matHeaderCellDef>
+        <mat-checkbox (change)="$event ? toggleAllRows() : null"
+                      [checked]="selection.hasValue() && isAllSelected()"
+                      [indeterminate]="selection.hasValue() && !isAllSelected()"
+                      [aria-label]="checkboxLabel()">
+        </mat-checkbox>
+      </th>
+      <td mat-cell *matCellDef="let row">
+        <mat-checkbox (click)="$event.stopPropagation()"
+                      (change)="$event ? selection.toggle(row) : null"
+                      [checked]="selection.isSelected(row)"
+                      [aria-label]="checkboxLabel(row)">
+        </mat-checkbox>
+      </td>
     </ng-container>
+
+    <!-- Device Column -->
     <ng-container matColumnDef="device">
-      <th mat-header-cell *matHeaderCellDef>Device</th>
-      <td mat-cell *matCellDef="let element">{{element.device}}</td>
+      <th mat-header-cell *matHeaderCellDef> Device </th>
+      <td mat-cell *matCellDef="let element"> {{element.device}} </td>
     </ng-container>
+
+    <!-- Supplier Column -->
     <ng-container matColumnDef="division">
-      <th mat-header-cell *matHeaderCellDef>Division</th>
-      <td mat-cell *matCellDef="let element">{{element.division}}</td>
+      <th mat-header-cell *matHeaderCellDef> Division </th>
+      <td mat-cell *matCellDef="let element"> {{element.division}} </td>
     </ng-container>
+
+    <!-- Date Delivered Column -->
     <ng-container matColumnDef="section">
-      <th mat-header-cell *matHeaderCellDef>Section</th>
-      <td mat-cell *matCellDef="let element">{{element.section}}</td>
+      <th mat-header-cell *matHeaderCellDef> Section </th>
+      <td mat-cell *matCellDef="let element"> {{element.section}} </td>
     </ng-container>
+
+    <!-- Valid Until Column -->
     <ng-container matColumnDef="conns">
-      <th mat-header-cell *matHeaderCellDef>No. of Connections</th>
-      <td mat-cell *matCellDef="let element">{{element.conns}}</td>
+      <th mat-header-cell *matHeaderCellDef> No. of Connections </th>
+      <td mat-cell *matCellDef="let element"> {{element.conns}} </td>
     </ng-container>
+
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
- </table>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"
+        (click)="selection.toggle(row)">
+    </tr>
+  </table>
+
 </aside>
