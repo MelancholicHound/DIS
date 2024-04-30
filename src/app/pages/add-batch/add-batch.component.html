@@ -96,6 +96,17 @@
       </div>
       <div class="modal-body">
         <form action="">
+          <div>
+            <p>Device</p>
+            <select name="device-class" id="">
+              <option value="" disabled selected>Select a device</option>
+              <option *ngFor="let device of deviceClass" value="">{{device}}</option>
+            </select>
+          </div>
+          <div>
+            <p>Device Count</p>
+            <input type="text" name="" id="">
+          </div>
         </form>
       </div>
       <div class="modal-footer">

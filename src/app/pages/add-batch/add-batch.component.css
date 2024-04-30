@@ -41,3 +41,24 @@ button {
   border-radius: 5px;
 }
 
+p {
+  margin: 0;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  div {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+  input {
+    width: 50%;
+  }
+  select {
+    width: 40%;
+  }
+}
+

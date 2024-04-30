@@ -3,6 +3,7 @@ import { SelectionModel } from '@angular/cdk/collections';
 import { Router } from '@angular/router';
 import { MatTableModule, MatTableDataSource } from '@angular/material/table';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { NgFor } from '@angular/common';
 
 import { AuthService } from '../../tools/services/auth.service';
 
@@ -13,7 +14,8 @@ import { Device } from '../../tools/models/Device';
   standalone: true,
   imports: [
     MatTableModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    NgFor
   ],
   templateUrl: './add-batch.component.html',
   styleUrl: './add-batch.component.css'
@@ -25,15 +27,15 @@ export class AddBatchComponent implements OnInit {
 
   tempBatch: any;
 
-  devices: Device[] = [
-    {id: 1, device: 'COMPUTER', division: 'HOPSS', section: 'IMISS', conns: 2 }
-  ];
+  devices: Device[] = [];
 
   dataSource = new MatTableDataSource<Device>(this.devices);
   selection= new SelectionModel<Device>(true, []);
-  displayedColumns: string [] = [ 'select', 'device', 'division', 'section', 'conns', 'settings'];
+  displayedColumns: string [] = [ 'select', 'device', 'division', 'section', 'conns', 'settings' ];
+  deviceClass: string[] = [ 'Computer', 'Laptop', 'Tablet', 'Printer', 'Router', 'Scanner', 'AIO' ];
 
-  ngOnInit(): void {
+  ngOnInit(): void
+  ''
      const fetchedBatch = this.authService.getTempBatch();
      this.tempBatch = fetchedBatch[0];
   }
