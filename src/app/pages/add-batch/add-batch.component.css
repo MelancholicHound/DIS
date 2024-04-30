@@ -9,7 +9,7 @@ header, div.card, span {
   gap: 20px;
 }
 
-div.card {
+div.card, section {
   width: 100%;
   height: auto;
   justify-content: space-between;
@@ -21,3 +21,23 @@ table {
   margin-top: 50px;
   border: 1px solid #d3d3d3;
 }
+
+button.settings {
+  border: none;
+  background-color: transparent;
+}
+
+section, div.clickables {
+  display: flex;
+}
+
+div.clickables {
+  gap: 20px
+}
+
+button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+}
+

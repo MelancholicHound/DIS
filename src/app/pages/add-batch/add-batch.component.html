@@ -17,10 +17,20 @@
       </button>
     </span>
   </div>
+  <section>
+    <p>Device Summary</p>
+    <div class="clickables demo-button-container">
+      <button data-bs-target="#addDeviceModal" data-bs-toggle="modal" type="button">Add</button>
+      <button type="button">Delete</button>
+    </div>
+  </section>
   <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
     <!-- Checkbox Column -->
     <ng-container matColumnDef="select">
+      <th mat-header-cell>
+
+      </th>
       <th mat-header-cell *matHeaderCellDef>
         <mat-checkbox (change)="$event ? toggleAllRows() : null"
                       [checked]="selection.hasValue() && isAllSelected()"
@@ -61,10 +71,36 @@
       <td mat-cell *matCellDef="let element"> {{element.conns}} </td>
     </ng-container>
 
+    <!-- Settings Column -->
+    <ng-container matColumnDef="settings">
+      <th mat-header-cell *matHeaderCellDef></th>
+      <td mat-cell *matCellDef>
+        <button type="button" class="settings material-symbols-outlined">more_vert</button>
+      </td>
+    </ng-container>
+
+
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"
         (click)="selection.toggle(row)">
     </tr>
   </table>
-
 </aside>
+
+<div class="modal" id="addDeviceModal" tabindex="-1" aria-labelledby="addDeviceModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modatl title fs-5" id="addDeviceModalLabel">Add Device</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form action="">
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button class="submit-btn" type="submit">Add</button>
+      </div>
+    </div>
+  </div>
+</div>

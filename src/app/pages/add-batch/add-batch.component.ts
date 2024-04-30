@@ -25,11 +25,13 @@ export class AddBatchComponent implements OnInit {
 
   tempBatch: any;
 
-  devices: Device[] = [];
+  devices: Device[] = [
+    {id: 1, device: 'COMPUTER', division: 'HOPSS', section: 'IMISS', conns: 2 }
+  ];
 
   dataSource = new MatTableDataSource<Device>(this.devices);
   selection= new SelectionModel<Device>(true, []);
-  displayedColumns: string [] = [ 'select', 'device', 'division', 'section', 'conns'];
+  displayedColumns: string [] = [ 'select', 'device', 'division', 'section', 'conns', 'settings'];
 
   ngOnInit(): void {
      const fetchedBatch = this.authService.getTempBatch();
