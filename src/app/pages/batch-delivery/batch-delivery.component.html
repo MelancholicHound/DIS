@@ -1,15 +1,16 @@
 <aside>
   <header><a href="">Batch Delivery</a></header>
- <section>
-  <div class="search">
-    <input type="text" role="search" aria-label="searchbar" placeholder="Search for batch">
-    <button type="submit" class="search-btn">Search</button>
-  </div>
-  <div class="clickables">
-    <button type="button" class="add-btn" data-bs-target="#addBatchModal" data-bs-toggle="modal">Add</button>
-    <button type="button" class="delete-btn">Delete</button>
-  </div>
- </section>
+  <section>
+    <div class="search">
+      <input type="text" role="search" aria-label="searchbar" placeholder="Search for batch">
+      <button type="submit" class="search-btn">Search</button>
+    </div>
+    <div class="clickables">
+      <button type="button" class="add-btn" data-bs-target="#addBatchModal" data-bs-toggle="modal">Add</button>
+      <button type="button" class="delete-btn">Delete</button>
+    </div>
+  </section>
+ <!-- Batch Data Table -->
  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
   <!-- Checkbox Column -->
@@ -61,6 +62,7 @@
 </table>
 </aside>
 
+<!-- Add Batch Modal -->
 <div class="modal" id="addBatchModal" tabindex="-1" aria-labelledby="addBatchModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
@@ -103,7 +105,6 @@
               </span>
             </span>
           </div>
-
         </form>
       </div>
       <div class="modal-footer">
@@ -112,6 +113,22 @@
     </div>
   </div>
 </div>
-<div>
-  <router-outlet></router-outlet>
+
+<div class="modal" id="addSupplierModal" tabindex="-1" aria-labelledby="addSupplierModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="addSupplierModalLabel">Add Supplier</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form action="">
+
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button">Add</button>
+      </div>
+    </div>
+  </div>
 </div>

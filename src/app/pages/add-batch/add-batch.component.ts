@@ -34,8 +34,7 @@ export class AddBatchComponent implements OnInit {
   displayedColumns: string [] = [ 'select', 'device', 'division', 'section', 'conns', 'settings' ];
   deviceClass: string[] = [ 'Computer', 'Laptop', 'Tablet', 'Printer', 'Router', 'Scanner', 'AIO' ];
 
-  ngOnInit(): void
-  ''
+  ngOnInit(): void {
      const fetchedBatch = this.authService.getTempBatch();
      this.tempBatch = fetchedBatch[0];
   }
@@ -58,6 +57,6 @@ export class AddBatchComponent implements OnInit {
     if (!row) {
       return `${this.isAllSelected() ? 'deselect' : 'select'} all`;
     }
-    return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.id + 1}`;
+      return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.id + 1}`;
   }
 }
