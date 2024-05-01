@@ -1,134 +1,86 @@
 <aside>
-  <header><a href="">Batch Delivery</a></header>
-  <section>
-    <div class="search">
-      <input type="text" role="search" aria-label="searchbar" placeholder="Search for batch">
-      <button type="submit" class="search-btn">Search</button>
-    </div>
-    <div class="clickables">
-      <button type="button" class="add-btn" data-bs-target="#addBatchModal" data-bs-toggle="modal">Add</button>
-      <button type="button" class="delete-btn">Delete</button>
-    </div>
-  </section>
- <!-- Batch Data Table -->
- <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
-  <!-- Checkbox Column -->
-  <ng-container matColumnDef="select">
-    <th mat-header-cell *matHeaderCellDef>
-      <mat-checkbox (change)="$event ? toggleAllRows() : null"
-                    [checked]="selection.hasValue() && isAllSelected()"
-                    [indeterminate]="selection.hasValue() && !isAllSelected()"
-                    [aria-label]="checkboxLabel()">
-      </mat-checkbox>
-    </th>
-    <td mat-cell *matCellDef="let row">
-      <mat-checkbox (click)="$event.stopPropagation()"
-                    (change)="$event ? selection.toggle(row) : null"
-                    [checked]="selection.isSelected(row)"
-                    [aria-label]="checkboxLabel(row)">
-      </mat-checkbox>
-    </td>
-  </ng-container>
+    <header class="page-header">
+        <a href="" class="page-name">Batch Delivery</a>
+    </header>
 
-  <!-- Batch Number Column -->
-  <ng-container matColumnDef="batchId">
-    <th mat-header-cell *matHeaderCellDef> Batch Number </th>
-    <td mat-cell *matCellDef="let element"> {{element.batchId}} </td>
-  </ng-container>
+    <section>
+        <div class="search">
+            <input type="text" name="search-bar" id="search-bar" placeholder="Search for batch">
+            <button class="search-btn" type="submit">Search</button>
+        </div>
+        <div class="clickables">
+            <button type="button" class="add-btn" data-bs-target="#addBatchModal" data-bs-toggle="modal">Add</button>
+            <button type="button" class="delete-btn">Delete</button>
+        </div>
+    </section>
 
-  <!-- Supplier Column -->
-  <ng-container matColumnDef="supplier">
-    <th mat-header-cell *matHeaderCellDef> Supplier </th>
-    <td mat-cell *matCellDef="let element"> {{element.supplier}} </td>
-  </ng-container>
+    <!--  Batch Data Table -->
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
-  <!-- Date Delivered Column -->
-  <ng-container matColumnDef="dateDelivered">
-    <th mat-header-cell *matHeaderCellDef> Date Delivered </th>
-    <td mat-cell *matCellDef="let element"> {{element.dateDelivered}} </td>
-  </ng-container>
+      <!-- Checkbox Column -->
+      <ng-container matColumnDef="select">
+          <th mat-header-cell *matHeaderCellDef>
+              <mat-checkbox (change)="$event ? toggleAllRows() : null"
+                            [checked]="selection.hasValue() && isAllSelected()"
+                            [indeterminate]="selection.hasValue() && !isAllSelected()"
+                            [aria-label]="checkboxLabel()">
+              </mat-checkbox>
+          </th>
+          <td mat-cell *matCellDef="let row">
+              <mat-checkbox (click)="$event.stopPropagation()"
+                            (change)="$event ? selection.toggle(row) : null"
+                            [checked]="selection.isSelected(row)"
+                            [aria-label]="checkboxLabel(row)">
+              </mat-checkbox>
+          </td>
+      </ng-container>
 
-  <!-- Valid Until Column -->
-  <ng-container matColumnDef="validUntil">
-    <th mat-header-cell *matHeaderCellDef> Valid Until </th>
-    <td mat-cell *matCellDef="let element"> {{element.validUntil}} </td>
-  </ng-container>
+      <!-- Batch Number Column -->
+      <ng-container matColumnDef="batchId">
+          <th mat-header-cell *matHeaderCellDef> Batch Number </th>
+          <td mat-cell *matCellDef="let element"> {{element.batchId}} </td>
+      </ng-container>
 
-  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-  <tr mat-row *matRowDef="let row; columns: displayedColumns;"
-      (click)="selection.toggle(row)">
-  </tr>
-</table>
+      <!-- Supplier Column -->
+      <ng-container matColumnDef="supplier">
+          <th mat-header-cell *matHeaderCellDef> Supplier </th>
+          <td mat-cell *matCellDef="let element"> {{element.supplier}} </td>
+      </ng-container>
+
+      <!-- Date Delivered Column -->
+      <ng-container matColumnDef="dateDelivered">
+          <th mat-header-cell *matHeaderCellDef> Date Delivered </th>
+          <td mat-cell *matCellDef="let element"> {{element.dateDelivered}} </td>
+      </ng-container>
+
+      <!-- Valid Until Column -->
+      <ng-container matColumnDef="validUntil">
+          <th mat-header-cell *matHeaderCellDef> Valid Until </th>
+          <td mat-cell *matCellDef="let element"> {{element.validUntil}} </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="selection.toggle(row)"></tr>
+
+  </table>
+
 </aside>
 
 <!-- Add Batch Modal -->
-<div class="modal" id="addBatchModal" tabindex="-1" aria-labelledby="addBatchModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="addBatchModalLabel">Add Batch</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <form class="add-batch" action="" [formGroup]="batchForm" novalidate>
-          <p>Batch Number: {{yearTracker}}-{{paddedNumber}}</p>
-          <span>
-            <p>Supplier:</p>
-            <input type="text" class="form-control" formControlName="supplier" placeholder="Enter Supplier">
-          </span>
-          <span>
-            <p>Service Center:</p>
-            <input type="text" class="form-control" formControlName="serviceCenter" placeholder="Enter Service Center">
-          </span>
-          <div class="dates">
-            <span>
-              <p>Date Delivered:</p>
-              <input type="date" class="form-control" formControlName="dateDelivered" name="dateDelived" id="date-delivered">
-            </span>
-            <span>
-              <p>Valid Until:</p>
-              <input type="date" class="form-control" formControlName="validUntil" name="" id="">
-            </span>
-          </div>
-          <div class="expired">
-            <span>
-              <p>Date Tested:</p>
-              <span class="tested">
-                <div class="date-tested">
-                  <input type="date" class="form-control" formControlName="dateTested" name="" id="">
-                </div>
-                <div class="not-tested">
-                  <input type="radio" name="" id="">
-                  <p>Not Tested Yet</p>
-                </div>
-              </span>
-            </span>
-          </div>
-        </form>
-      </div>
-      <div class="modal-footer">
-        <button class="submit-btn" type="submit" [disabled]="!batchValid()" data-bs-dismiss="modal" (click)="sendBatch()">Create</button>
-      </div>
+<div class="modal add-batch" id="addBatchModal" tabindex="-1" aria-labelledby="addBatchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="addBatchModalLabel">Add Batch</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <app-batch-form></app-batch-form>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="submit-btn" data-bs-dismiss="modal">Create</button>
+            </div>
+        </div>
     </div>
-  </div>
-</div>
-
-<div class="modal" id="addSupplierModal" tabindex="-1" aria-labelledby="addSupplierModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="addSupplierModalLabel">Add Supplier</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <form action="">
-
-        </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button">Add</button>
-      </div>
-    </div>
-  </div>
 </div>

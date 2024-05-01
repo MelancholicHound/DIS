@@ -1,0 +1,68 @@
+form {
+    width: 100%;
+    flex-direction: column;
+    gap: 20px;
+}
+
+button {
+    padding: 0 15px;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #808080;
+}
+
+i {
+    font-size: 25px;
+}
+
+p {
+    margin: 0;
+}
+
+input {
+    height: 3rem;
+    padding: 10px;
+    border: 1px solid #808080;
+}
+
+input, button {
+    border-radius: 5px;
+}
+
+div, span {
+    gap: 10px
+}
+
+.dates, .suppliers-list, .test {
+    justify-content: space-between;
+}
+
+
+form, span, div, button {
+    display: flex;
+}
+
+.supplier, .serv-center, .delivered, .validity, .date-tested {
+    flex-direction: column;
+}
+
+.not-tested {
+    margin-top: 2rem;
+    align-items: center;
+}
+
+#suppliers {
+    width: 500px;
+}
+
+input[type='date'], .not-tested {
+    width: 13rem;
+}
+
+input[type='radio'] {
+    height: 1.25em;
+    width: 1.25em;
+}
+
+
+

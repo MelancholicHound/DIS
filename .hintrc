@@ -8,6 +8,13 @@
       {
         "empty-table-header": "off"
       }
+    ],
+    "axe/forms": [
+      "default",
+      {
+        "select-name": "off",
+        "label": "off"
+      }
     ]
   }
 }
