@@ -5,21 +5,81 @@ aside {
 
 nav {
     gap: 5px;
+    align-items: center;
 }
 
 a {
     color: #1d1d1f;
+    text-decoration: none;
 }
 
 span {
     flex-direction: row;
-    width: 45%;
+    align-items: center;
+    gap: 30px;
+}
+
+form {
+    width: 100%;
+    gap: 20px;
+}
+
+input {
+    height: 3rem;
+}
+
+p {
+    margin: 0;
+}
+
+p.nav-label {
+    text-decoration: underline;
 }
 
 section {
     justify-content: space-between;
 }
 
-section, nav, span {
+section.card {
+    margin: 2rem 0;
+    padding: 20px;
+    flex-direction: row;
+}
+
+aside button {
+  padding: 0 30px;
+  height: 3rem;
+  border: 2px solid #1d1d1f;
+  justify-content: center;
+  align-items: center;
+}
+
+.table-heading {
+  padding: 20px 15px;
+}
+
+.nav-label, .table-title {
+    font-size: 1.5rem;
+}
+
+.add-btn, .delete-btn {
+    padding: 0;
+    width: 3.4rem;
+    height: 3rem;
+}
+
+.device, .count {
+    gap: 10px;
+}
+
+.device, .count, form {
+    flex-direction: column;
+}
+
+section, nav, span, button, .device, .count, form {
     display: flex;
+}
+
+p.nav-label, a, .table-title {
+    font-weight: 700;
 }

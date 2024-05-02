@@ -24,14 +24,14 @@
     </section>
 
     <!-- Table Manipulation -->
-    <section>
-        <h2>Device Summary</h2>
+    <section class="table-heading">
+        <p class="table-title">Device Summary</p>
         <span>
-            <button type="button">
-                <p> Add </p>
+            <button class="add-btn" type="button" data-bs-target="#addDeviceModal" data-bs-toggle="modal">
+                <i class="material-symbols-outlined"> add </i>
             </button>
-            <button type="button">
-                <p> Delete </p>
+            <button class="delete-btn" type="button">
+              <i class="material-symbols-outlined"> delete </i>
             </button>
         </span>
     </section>
@@ -104,10 +104,19 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h1 class="modal-title fs-5" id="addDeviceModalLabel"> Add Device </h1>
-                <button type="button" class="btn-close" data-bs-target="modal" aria-label="Close"></button>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-
+                <form action="">
+                    <div class="device">
+                        <p>Device</p>
+                        <input type="text" placeholder="">
+                    </div>
+                    <div class="count">
+                        <p>Count</p>
+                        <input type="text" placeholder="">
+                    </div>
+                </form>
             </div>
         </div>
     </div>
