@@ -35,7 +35,7 @@ input {
     color: #423BFF;
 }
 
-.search-btn:hover, .add-btn, .submit-btn {
+.search-btn:hover, .add-btn {
     background-color: #423BFF;
     color: #f5f5f7;
 }
@@ -43,10 +43,6 @@ input {
 .delete-btn {
     background-color: #E51D1D;
     color: #f5f5f7;
-}
-
-.submit-btn {
-    height: 3rem;
 }
 
 .search, .clickables {
