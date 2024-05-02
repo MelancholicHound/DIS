@@ -66,8 +66,6 @@ export class BatchDeliveryComponent {
   }
 
   toggleSupplierForm(value: boolean) {
-    const title = document.querySelector('.modal-title') as HTMLElement;
-    title.textContent = 'Supplier Information';
     this.supplierFormToggler = !value;
     this.batchFormToggler = value;
   }

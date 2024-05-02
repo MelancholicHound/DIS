@@ -19,12 +19,12 @@ p {
     margin: 0;
 }
 
-input {
+input, select {
     padding: 10px;
     border: 1px solid #808080;
 }
 
-input, button {
+input, button, select {
     height: 3rem;
     border-radius: 5px;
 }
@@ -60,6 +60,7 @@ form, span, div, button {
     margin-top: 2rem;
     align-items: center;
 }
+
 
 .container {
     justify-content: center;
