@@ -1,0 +1,53 @@
+div {
+    gap: 10px;
+}
+
+form {
+    gap: 20px;
+}
+
+button {
+    border-radius: 5px;
+    padding: 0 30px;
+    width: 150px;
+    border: none;
+    color: white;
+}
+
+p {
+    margin: 0;
+}
+
+input {
+    padding: 10px;
+}
+
+span {
+    gap: 5rem;
+    justify-content: center;
+    margin-top: 2rem;
+}
+
+.label {
+    font-weight: 700;
+}
+
+.back-btn {
+    background-color: #6c757d;
+}
+
+.submit-btn {
+    background-color: #423BFF;
+}
+
+form, div, span {
+    display: flex;
+}
+
+form, div {
+    flex-direction: column;
+}
+
+input, button {
+    height: 3rem;
+}

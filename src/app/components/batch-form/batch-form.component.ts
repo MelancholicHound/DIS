@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, Validators, FormGroup, ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 
@@ -15,6 +15,10 @@ import { AuthService } from '../../tools/services/auth.service';
   styleUrl: './batch-form.component.css'
 })
 export class BatchFormComponent {
+
+  @Output() booleanEvent = new EventEmitter<boolean>();
+
+  value: boolean = true;
 
   batchForm! : FormGroup;
 
@@ -39,4 +43,7 @@ export class BatchFormComponent {
     this.authService.postTempBatch(this.batchForm.value);
   }
 
+  emitValue() {
+    this.booleanEvent.emit(this.value);
+  }
 }

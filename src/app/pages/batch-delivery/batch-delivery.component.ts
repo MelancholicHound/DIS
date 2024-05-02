@@ -1,4 +1,4 @@
-import { Component, ApplicationConfig } from '@angular/core';
+import { Component } from '@angular/core';
 import { SelectionModel } from '@angular/cdk/collections';
 import { MatTableModule, MatTableDataSource } from '@angular/material/table';
 import { MatCheckboxModule } from '@angular/material/checkbox';
@@ -27,11 +27,13 @@ import { Batch } from '../../tools/models/Batch';
 
 export class BatchDeliveryComponent {
 
-  toggler: boolean = true;
+  batchFormToggler: boolean = true;
+  supplierFormToggler!: boolean;
 
   displayedColumns: string [] = [ 'select' , 'batchId' , 'supplier' , 'dateDelivered', 'validUntil' ];
 
-  constructor(private authService : AuthService, private router : Router) { }
+  constructor(private authService : AuthService,
+              private router : Router) { }
 
   batchData: any = this.authService.getSampleData();
   dataSource = new MatTableDataSource<Batch>(this.batchData);
@@ -58,7 +60,15 @@ export class BatchDeliveryComponent {
     return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.id + 1}`;
   }
 
-  toggle() {
-    this.toggler = !this.toggler;
+  toggleBatchForm(value: boolean) {
+    this.batchFormToggler = !value;
+    this.supplierFormToggler = value;
+  }
+
+  toggleSupplierForm(value: boolean) {
+    const title = document.querySelector('.modal-title') as HTMLElement;
+    title.textContent = 'Supplier Information';
+    this.supplierFormToggler = !value;
+    this.batchFormToggler = value;
   }
 }

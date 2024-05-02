@@ -67,17 +67,17 @@
 
 </aside>
 
-<!-- Add Batch Modal -->
+<!-- Modal -->
 <div class="modal add-batch" id="addBatchModal" tabindex="-1" aria-labelledby="addBatchModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
-                <h1 class="modal-title fs-5" id="addBatchModalLabel">Add Batch</h1>
+                <h1 class="modal-title fs-5" id="addBatchModalLabel">{{batchFormToggler ? 'Add Batch' : 'Supplier Information'}}</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-              <app-batch-form></app-batch-form>
-              <app-supplier-form></app-supplier-form>
+                <app-batch-form (booleanEvent)="toggleBatchForm($event)" *ngIf="batchFormToggler"></app-batch-form>
+                <app-supplier-form (booleanEvent)="toggleSupplierForm($event)" *ngIf="supplierFormToggler"></app-supplier-form>
             </div>
         </div>
     </div>

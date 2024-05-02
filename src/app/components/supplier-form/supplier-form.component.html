@@ -3,26 +3,34 @@
     <!-- Supplier -->
     <div class="supplier">
         <p> Supplier </p>
-        <input class="form-control" formControlName="supplier" type="text" name="" id="">
+        <input class="form-control" formControlName="supplier" type="text" name="" id="" placeholder="Enter company name">
     </div>
 
     <!-- Location -->
     <div class="location">
         <p> Location </p>
-        <input class="form-control" formControlName="location" type="text" name="" id="">
+        <input class="form-control" formControlName="location" type="text" name="" id="" placeholder="Enter company address">
     </div>
 
     <!-- Email Address -->
     <div class="email">
         <p> Email Address </p>
-        <input class="form-control" formControlName="email" type="text" name="" id="">
+        <input class="form-control" formControlName="email" type="text" name="" id="" placeholder="Enter company email address">
     </div>
 
     <!-- Phone Number -->
     <div class="num">
         <p> Phone Number </p>
-        <input class="form-control" formControlName="phonenum" type="text" name="" id="">
+        <input class="form-control" formControlName="phonenum" type="text" name="" id="" placeholder="Enter company contact number">
     </div>
 
-    <button type="submit" class="submit-btn"> Save </button>
+    <span>
+      <button type="submit" class="submit-btn">
+          <p class="label"> Save </p>
+      </button>
+      <button type="button" class="back-btn" (click)="emitValue()">
+          <p class="label"> Back </p>
+      </button>
+    </span>
+
 </form>
