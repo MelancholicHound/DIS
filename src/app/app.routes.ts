@@ -14,6 +14,9 @@ import { ComputerComponent } from './pages/devices/computer/computer.component';
 import { LaptopComponent } from './pages/devices/laptop/laptop.component';
 import { TabletComponent } from './pages/devices/tablet/tablet.component';
 
+import { BatchFormComponent } from './components/batch-form/batch-form.component';
+import { SupplierFormComponent } from './components/supplier-form/supplier-form.component';
+
 export const routes: Routes = [
   { path : 'login' , component : LoginComponent },
   { path : 'register' , component : RegisterComponent },
@@ -26,5 +29,6 @@ export const routes: Routes = [
   { path : 'computer-inventory' , component : ComputerInventoryComponent },
   { path : 'suppliers' , component : SuppliersComponent },
   { path : 'accounts' , component : AccountListsComponent },
-
+  { path : 'batch-form' , component : BatchFormComponent },
+  { path : 'supplier-form' , component : SupplierFormComponent }
 ];

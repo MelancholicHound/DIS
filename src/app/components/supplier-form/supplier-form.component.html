@@ -1,28 +1,28 @@
-<form action="">
+<form action="" [formGroup]="supplierForm">
 
     <!-- Supplier -->
     <div class="supplier">
-        <p>Supplier</p>
-        <input type="text" name="" id="">
+        <p> Supplier </p>
+        <input class="form-control" formControlName="supplier" type="text" name="" id="">
     </div>
 
     <!-- Location -->
     <div class="location">
-        <p>Location</p>
-        <input type="text" name="" id="">
+        <p> Location </p>
+        <input class="form-control" formControlName="location" type="text" name="" id="">
     </div>
 
     <!-- Email Address -->
     <div class="email">
-        <p>Email Address</p>
-        <input type="text" name="" id="">
+        <p> Email Address </p>
+        <input class="form-control" formControlName="email" type="text" name="" id="">
     </div>
 
     <!-- Phone Number -->
     <div class="num">
-        <p>Phone Number</p>
-        <input type="text" name="" id="">
+        <p> Phone Number </p>
+        <input class="form-control" formControlName="phonenum" type="text" name="" id="">
     </div>
 
-    <button type="submit">SAVE</button>
+    <button type="submit" class="submit-btn"> Save </button>
 </form>

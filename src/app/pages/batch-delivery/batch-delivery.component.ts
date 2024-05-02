@@ -1,11 +1,13 @@
-import { Component, NgModule } from '@angular/core';
+import { Component, ApplicationConfig } from '@angular/core';
 import { SelectionModel } from '@angular/cdk/collections';
 import { MatTableModule, MatTableDataSource } from '@angular/material/table';
 import { MatCheckboxModule } from '@angular/material/checkbox';
-import { Router, RouterOutlet } from '@angular/router';
+import { Router } from '@angular/router';
+import { NgIf } from '@angular/common';
 
 import { AuthService } from '../../tools/services/auth.service';
 import { BatchFormComponent } from '../../components/batch-form/batch-form.component';
+import { SupplierFormComponent } from '../../components/supplier-form/supplier-form.component';
 
 import { Batch } from '../../tools/models/Batch';
 
@@ -15,14 +17,17 @@ import { Batch } from '../../tools/models/Batch';
   imports: [
     MatTableModule,
     MatCheckboxModule,
-    RouterOutlet,
-    BatchFormComponent
+    BatchFormComponent,
+    SupplierFormComponent,
+    NgIf
   ],
   templateUrl: './batch-delivery.component.html',
   styleUrl: './batch-delivery.component.css'
 })
 
 export class BatchDeliveryComponent {
+
+  toggler: boolean = true;
 
   displayedColumns: string [] = [ 'select' , 'batchId' , 'supplier' , 'dateDelivered', 'validUntil' ];
 
@@ -51,5 +56,9 @@ export class BatchDeliveryComponent {
       return `${this.isAllSelected() ? 'deselect' : 'select'} all`;
     }
     return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.id + 1}`;
+  }
+
+  toggle() {
+    this.toggler = !this.toggler;
   }
 }

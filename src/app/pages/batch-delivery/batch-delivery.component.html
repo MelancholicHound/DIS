@@ -10,7 +10,7 @@
             <button class="search-btn" type="submit">Search</button>
         </div>
         <div class="clickables">
-            <button type="button" class="add-btn" data-bs-target="#addBatchModal" data-bs-toggle="modal">Add</button>
+            <button type="button" class="add-btn" data-bs-target="#addBatchModal" data-bs-toggle="modal" routerLink="batch-form">Add</button>
             <button type="button" class="delete-btn">Delete</button>
         </div>
     </section>
@@ -76,7 +76,8 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <app-batch-form></app-batch-form>
+              <app-batch-form></app-batch-form>
+              <app-supplier-form></app-supplier-form>
             </div>
         </div>
     </div>

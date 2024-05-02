@@ -16,14 +16,14 @@ import { AuthService } from '../../tools/services/auth.service';
 })
 export class BatchFormComponent {
 
-  batchForm!: FormGroup;
+  batchForm! : FormGroup;
 
   constructor(private _builder : FormBuilder,
               private authService : AuthService,
               private router : Router) {
     this.batchForm = this._builder.group({
-      supplier: ['', Validators.required],
-      serviceCenter: ['', Validators.required],
+      supplier: ['', Validators.required, Validators.pattern('^[a-zA-Z]+$')],
+      serviceCenter: ['', Validators.required, Validators.pattern('^[a-zA-z]+$')],
       dateDelivered: ['', Validators.required],
       validUntil: ['', Validators.required],
       dateTested: ['']
@@ -38,4 +38,5 @@ export class BatchFormComponent {
     this.router.navigate(['/add-batch']);
     this.authService.postTempBatch(this.batchForm.value);
   }
+
 }
