@@ -1,64 +1,25 @@
 aside {
-  width: 80vw;
-  padding: 20px;
+    padding: 30px;
+    width: 80vw;
 }
 
-header, div.card, span {
-  display: flex;
-  flex-direction: row;
-  gap: 20px;
-}
-
-div.card, section {
-  width: 100%;
-  height: auto;
-  justify-content: space-between;
-  padding: 20px;
-}
-
-table {
-  width: 100%;
-  margin-top: 50px;
-  border: 1px solid #d3d3d3;
-}
-
-button.settings {
-  border: none;
-  background-color: transparent;
-}
-
-section, div.clickables {
-  display: flex;
-}
-
-div.clickables {
-  gap: 20px
-}
-
-button {
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-}
-
-p {
-  margin: 0;
-}
-
-form {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  div {
-    display: flex;
-    flex-direction: column;
+nav {
     gap: 5px;
-  }
-  input {
-    width: 50%;
-  }
-  select {
-    width: 40%;
-  }
 }
 
+a {
+    color: #1d1d1f;
+}
+
+span {
+    flex-direction: row;
+    width: 45%;
+}
+
+section {
+    justify-content: space-between;
+}
+
+section, nav, span {
+    display: flex;
+}
