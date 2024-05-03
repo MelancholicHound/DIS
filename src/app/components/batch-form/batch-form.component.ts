@@ -40,7 +40,6 @@ export class BatchFormComponent {
 
   sendBatch() {
     this.router.navigate(['/add-batch']);
-    this.authService.postTempBatch(this.batchForm.value);
   }
 
   emitValue() {

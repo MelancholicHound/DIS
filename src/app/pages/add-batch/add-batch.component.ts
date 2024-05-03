@@ -35,8 +35,7 @@ export class AddBatchComponent implements OnInit {
   deviceClass: string[] = [ 'Computer', 'Laptop', 'Tablet', 'Printer', 'Router', 'Scanner', 'AIO' ];
 
   ngOnInit(): void {
-     const fetchedBatch = this.authService.getTempBatch();
-     this.tempBatch = fetchedBatch[0];
+     this.authService.getBatches().subscribe(res => this.tempBatch = res);
   }
 
   isAllSelected() {

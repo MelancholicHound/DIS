@@ -23,6 +23,7 @@ import { TabletComponent } from './pages/devices/tablet/tablet.component';
   selector: 'app-root',
   standalone: true,
   imports: [
+    HttpClientModule,
     RouterOutlet,
     RouterLink,
     RouterLinkActive,
@@ -38,8 +39,7 @@ import { TabletComponent } from './pages/devices/tablet/tablet.component';
     RegisterComponent,
     ComputerComponent,
     LaptopComponent,
-    TabletComponent,
-    HttpClientModule
+    TabletComponent
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'

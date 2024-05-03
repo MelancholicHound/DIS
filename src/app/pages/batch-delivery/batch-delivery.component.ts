@@ -35,7 +35,7 @@ export class BatchDeliveryComponent {
   constructor(private authService : AuthService,
               private router : Router) { }
 
-  batchData: any = this.authService.getSampleData();
+  batchData: any = this.authService.getBatches();
   dataSource = new MatTableDataSource<Batch>(this.batchData);
   selection = new SelectionModel<Batch>(true, []);
 
