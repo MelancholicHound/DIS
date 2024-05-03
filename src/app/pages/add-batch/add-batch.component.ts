@@ -17,6 +17,9 @@ import { Device } from '../../tools/models/Device';
     MatCheckboxModule,
     NgFor
   ],
+  providers: [
+    AuthService
+  ],
   templateUrl: './add-batch.component.html',
   styleUrl: './add-batch.component.css'
 })

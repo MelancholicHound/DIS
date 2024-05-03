@@ -21,6 +21,9 @@ import { Batch } from '../../tools/models/Batch';
     SupplierFormComponent,
     NgIf
   ],
+  providers: [
+    AuthService
+  ],
   templateUrl: './batch-delivery.component.html',
   styleUrl: './batch-delivery.component.css'
 })

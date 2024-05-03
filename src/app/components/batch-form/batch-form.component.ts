@@ -11,6 +11,9 @@ import { AuthService } from '../../tools/services/auth.service';
     FormsModule,
     ReactiveFormsModule
   ],
+  providers: [
+    AuthService
+  ],
   templateUrl: './batch-form.component.html',
   styleUrl: './batch-form.component.css'
 })

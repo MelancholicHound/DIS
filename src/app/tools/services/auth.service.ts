@@ -24,9 +24,9 @@ export class AuthService {
 
   getBatches(): Observable<any> {
     return this.http.get<any>(`${this.url}/batches`)
-      .pipe(
-        first(),
-        catchError(this.errorHandler.handleError<any>('batches'))
-      );
+    .pipe(
+      first(),
+      catchError(this.errorHandler.handleError<any>('batches'))
+    );
   }
 }

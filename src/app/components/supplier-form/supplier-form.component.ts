@@ -11,6 +11,9 @@ import { AuthService } from '../../tools/services/auth.service';
     ReactiveFormsModule,
     FormsModule
   ],
+  providers: [
+    AuthService
+  ],
   templateUrl: './supplier-form.component.html',
   styleUrl: './supplier-form.component.css'
 })
