@@ -22,11 +22,19 @@ export class AuthService {
               private errorHandler : ErrorHandlerService,
               private router : Router) { }
 
-  getBatches(): Observable<any> {
-    return this.http.get<any>(`${this.url}/batches`)
+  getBatches(): Observable<any[]> {
+    return this.http.get<any[]>(`${this.url}/batches`)
     .pipe(
       first(),
-      catchError(this.errorHandler.handleError<any>('batches'))
+      catchError(this.errorHandler.handleError<any[]>('batches'))
     );
+  }
+
+  getSupplierDetails(id: number): Observable<any> {
+    return this.http.get<any>(`${this.url}/suppliers/${id}`)
+    .pipe(
+      first(),
+      catchError(this.errorHandler.handleError<any>('suppliers'))
+    )
   }
 }

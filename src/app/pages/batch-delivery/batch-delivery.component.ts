@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { SelectionModel } from '@angular/cdk/collections';
 import { MatTableModule, MatTableDataSource } from '@angular/material/table';
 import { MatCheckboxModule } from '@angular/material/checkbox';
@@ -10,6 +10,7 @@ import { BatchFormComponent } from '../../components/batch-form/batch-form.compo
 import { SupplierFormComponent } from '../../components/supplier-form/supplier-form.component';
 
 import { Batch } from '../../tools/models/Batch';
+import { BatchTest } from '../../tools/models/BatchTest';
 
 @Component({
   selector: 'app-batch-delivery',
@@ -28,19 +29,33 @@ import { Batch } from '../../tools/models/Batch';
   styleUrl: './batch-delivery.component.css'
 })
 
-export class BatchDeliveryComponent {
+export class BatchDeliveryComponent implements OnInit {
 
   batchFormToggler: boolean = true;
   supplierFormToggler!: boolean;
+  count: number = 0;
 
-  displayedColumns: string [] = [ 'select' , 'batchId' , 'supplier' , 'dateDelivered', 'validUntil' ];
+  fetchedData!: any;
+  supplierName!: any;
+
+  displayedColumns: string [] = [ 'select' , 'id' , 'supplier' , 'dateDelivered', 'validUntil' ];
 
   constructor(private authService : AuthService,
               private router : Router) { }
 
-  batchData: any = this.authService.getBatches();
-  dataSource = new MatTableDataSource<Batch>(this.batchData);
-  selection = new SelectionModel<Batch>(true, []);
+  ngOnInit(): void {
+    this.authService.getBatches().subscribe(
+      (data) => {
+        this.fetchedData = data;
+        const length = this.fetchedData.length;
+      },
+      (error) => { console
+        .error('Error fetching data ', error) }
+    );
+  }
+
+  dataSource = new MatTableDataSource<BatchTest>(this.fetchedData);
+  selection = new SelectionModel<BatchTest>(true, []);
 
   isAllSelected() {
     const numSelected = this.selection.selected.length;
@@ -56,7 +71,7 @@ export class BatchDeliveryComponent {
     this.selection.select(...this.dataSource.data);
   }
 
-  checkboxLabel(row? : Batch): string {
+  checkboxLabel(row? : BatchTest): string {
     if (!row) {
       return `${this.isAllSelected() ? 'deselect' : 'select'} all`;
     }

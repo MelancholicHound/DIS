@@ -16,7 +16,7 @@
     </section>
 
     <!--  Batch Data Table -->
-    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    <table mat-table [dataSource]="fetchedData" class="mat-elevation-z8">
 
       <!-- Checkbox Column -->
       <ng-container matColumnDef="select">
@@ -37,15 +37,15 @@
       </ng-container>
 
       <!-- Batch Number Column -->
-      <ng-container matColumnDef="batchId">
+      <ng-container matColumnDef="id">
           <th mat-header-cell *matHeaderCellDef> Batch Number </th>
-          <td mat-cell *matCellDef="let element"> {{element.batchId}} </td>
+          <td mat-cell *matCellDef="let element"> {{element.id}} </td>
       </ng-container>
 
       <!-- Supplier Column -->
       <ng-container matColumnDef="supplier">
           <th mat-header-cell *matHeaderCellDef> Supplier </th>
-          <td mat-cell *matCellDef="let element"> {{element.supplier}} </td>
+          <td mat-cell *matCellDef="let element"> {{element.supplierId}} </td>
       </ng-container>
 
       <!-- Date Delivered Column -->
