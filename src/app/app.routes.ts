@@ -13,6 +13,7 @@ import { AddBatchComponent } from './pages/add-batch/add-batch.component';
 import { ComputerComponent } from './pages/devices/computer/computer.component';
 import { LaptopComponent } from './pages/devices/laptop/laptop.component';
 import { TabletComponent } from './pages/devices/tablet/tablet.component';
+import { AioComponent } from './pages/devices/aio/aio.component';
 
 import { BatchFormComponent } from './components/batch-form/batch-form.component';
 import { SupplierFormComponent } from './components/supplier-form/supplier-form.component';
@@ -30,5 +31,6 @@ export const routes: Routes = [
   { path : 'suppliers' , component : SuppliersComponent },
   { path : 'accounts' , component : AccountListsComponent },
   { path : 'batch-form' , component : BatchFormComponent },
-  { path : 'supplier-form' , component : SupplierFormComponent }
+  { path : 'supplier-form' , component : SupplierFormComponent },
+  { path : 'aio' , component : AioComponent }
 ];

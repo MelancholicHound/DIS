@@ -8,4 +8,9 @@
   margin: 0;
 }
 
+aside {
+  padding: 30px;
+  width: 80vw;
+}
+
 html, body { height: 100%; }

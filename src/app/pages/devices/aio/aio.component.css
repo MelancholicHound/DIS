@@ -1,0 +1,43 @@
+a {
+  text-decoration: none;
+  color: #1d1d1f;
+}
+
+p {
+    margin: 0;
+}
+
+nav {
+    align-items: center;
+    gap: 5px;
+}
+
+button {
+    padding: 0 30px;
+}
+
+section {
+    gap: 1rem;
+}
+
+.card {
+    padding: 20px;
+}
+
+.details {
+    align-items: center;
+    justify-content: space-between;
+}
+
+.page-title {
+    text-decoration: underline;
+}
+
+a, .label, .page-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+nav, section, span {
+  display: flex;
+}
