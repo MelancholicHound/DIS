@@ -1,9 +1,9 @@
 nav {
-    height: 100vh;
+    height: 100%;
     width: 20vw;
     padding: 10px;
     background-color: #5F67FF;
-    position: relative;
+    position: sticky;
 }
 
 header {
