@@ -10,22 +10,29 @@ p {
 nav {
     align-items: center;
     gap: 5px;
+    margin-bottom: 2rem;
 }
 
 button {
-    padding: 0 30px;
+    padding: 5px 30px;
+    border: 2px solid #1d1d1f;
 }
 
 section {
     gap: 1rem;
 }
 
+.others {
+    justify-content: space-between;
+}
+
 .card {
     padding: 20px;
+    margin-bottom: 1rem;
 }
 
 .details {
-    align-items: center;
+    align-items: end;
     justify-content: space-between;
 }
 
@@ -33,11 +40,19 @@ section {
     text-decoration: underline;
 }
 
+.destination {
+    gap: 50px;
+}
+
+div.card {
+    width: 30%;
+}
+
 a, .label, .page-title {
     font-size: 1.5rem;
     font-weight: 700;
 }
 
-nav, section, span {
+nav, section, span, others {
   display: flex;
 }

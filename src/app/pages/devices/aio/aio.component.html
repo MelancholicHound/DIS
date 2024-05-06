@@ -28,7 +28,7 @@
             </div>
             <button class="save-btn" type="submit">SAVE</button>
         </span>
-        <span>
+        <span class="destination">
             <div>
                 <p>Division</p>
                 <input type="text" name="" id="">
@@ -49,9 +49,18 @@
 
     </form>
 
-    <section>
-      <app-peripherals></app-peripherals>
-      <app-connections></app-connections>
-      <app-softwares></app-softwares>
+    <section class="others">
+        <div class="card">
+            <p>Peripherals</p>
+            <app-peripherals></app-peripherals>
+        </div>
+        <div class="card">
+            <p>Connections</p>
+            <app-connections></app-connections>
+        </div>
+        <div class="card">
+            <p>Softwares</p>
+            <app-softwares></app-softwares>
+        </div>
     </section>
 </aside>

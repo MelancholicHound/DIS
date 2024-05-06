@@ -18,6 +18,9 @@ header {
 }
 
 img {
+    max-inline-size: 100%;
+    block-size: auto;
+    object-fit: contain;
     width: 4.5rem;
     height: 4.5rem;
 }
