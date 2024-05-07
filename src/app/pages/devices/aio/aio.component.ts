@@ -1,5 +1,4 @@
 import { Component, isStandalone, OnInit } from '@angular/core';
-import { NgModel } from '@angular/forms';
 
 import { NgFor } from '@angular/common';
 
@@ -29,7 +28,7 @@ export class AioComponent implements OnInit {
 
   toggler = document.getElementById('toggler-peripheral') as HTMLInputElement;
 
-  fethedDivisions!: any;
+  fetchedDivisions!: any;
   fetchedSections!: any;
   id!: number;
 
@@ -44,11 +43,16 @@ export class AioComponent implements OnInit {
   constructor( private authService : AuthService ) {}
 
   ngOnInit(): void {
-    this.authService.getAllDivisions().subscribe(res => this.fethedDivisions = res);
+    this.authService.getAllDivisions().subscribe(res => this.fetchedDivisions = res);
     this.toggler?.addEventListener('keyup', this.toggled);
   }
 
   showSections(divisions: any) {
-    this.authService.getAllSections(divisions.id).subscribe(res => {console.log(res)});
+    this.authService.getAllSections(divisions.id).subscribe(res => this.fetchedSections = res);
+  }
+
+  getValue() {
+    let value = document.getElementById('division') as HTMLSelectElement;
+    console.log(value)
   }
 }
