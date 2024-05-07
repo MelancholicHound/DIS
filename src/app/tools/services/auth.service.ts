@@ -30,11 +30,27 @@ export class AuthService {
     );
   }
 
-  getSupplierDetails(id: number): Observable<any> {
+  getSupplierDetailsById(id: number): Observable<any> {
     return this.http.get<any>(`${this.url}/suppliers/${id}`)
     .pipe(
       first(),
       catchError(this.errorHandler.handleError<any>('suppliers'))
     )
+  }
+
+  getAllDivisions(): Observable<any> {
+    return this.http.get<any>(`${this.url}/divisions`)
+    .pipe(
+      first(),
+      catchError(this.errorHandler.handleError<any>('divisions'))
+    );
+  }
+
+  getAllSections(id: any): Observable<any> {
+    return this.http.get<any>(`${this.url}/divisions/${id}/sections`)
+    .pipe(
+      first(),
+      catchError(this.errorHandler.handleError<any>(`divisions/${id}/sections`))
+    );
   }
 }

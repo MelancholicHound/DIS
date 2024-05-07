@@ -179,7 +179,7 @@ main {
     align-items: center;
 }
 
-input[type='text'] {
+select {
     width: 10rem;
     height: 2rem;
 }

@@ -31,11 +31,17 @@
         <span class="destination">
             <div>
                 <p> Division </p>
-                <input type="text" name="" id="">
+                <select name="" id="">
+                    <option value="" disabled selected> Select Division </option>
+                    <option *ngFor="let divisions of fethedDivisions" (click)="showSections(divisions)" [value]="divisions.id"> {{divisions.name}} </option>
+                </select>
             </div>
             <div>
                 <p> Section </p>
-                <input type="text" name="" id="">
+                <select name="" id="">
+                      <option value="" disabled selected> Select Section</option>
+                      <option *ngFor="let sections of fetchedSections" value=""> {{sections.name}} </option>
+                </select>
             </div>
         </span>
     </section>
@@ -52,15 +58,15 @@
                   <div class="fields">
                       <div class="fillables">
                           <input type="text" name="" id="proc-brand">
-                          <label for=""> Brand </label>
+                          <label for="proc-brand"> Brand </label>
                       </div>
                       <div class="fillables">
                             <input type="text" name="" id="proc-series">
-                            <label for=""> Series </label>
+                            <label for="proc-series"> Series </label>
                       </div>
                       <div class="fillables">
                             <input type="text" name="" id="proc-modifier">
-                            <label for=""> Modifier </label>
+                            <label for="proc-modifier"> Modifier </label>
                       </div>
                   </div>
               </span>

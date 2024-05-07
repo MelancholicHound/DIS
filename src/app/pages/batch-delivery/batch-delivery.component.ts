@@ -9,7 +9,6 @@ import { AuthService } from '../../tools/services/auth.service';
 import { BatchFormComponent } from '../../components/batch-form/batch-form.component';
 import { SupplierFormComponent } from '../../components/supplier-form/supplier-form.component';
 
-import { Batch } from '../../tools/models/Batch';
 import { BatchTest } from '../../tools/models/BatchTest';
 
 @Component({
