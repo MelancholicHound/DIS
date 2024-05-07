@@ -54,11 +54,35 @@ export class AuthService {
     );
   }
 
-  getAllProcessors(): Observable<any> {
+  getAllProcessorsValues(): Observable<any> {
     return this.http.get<any>(`${this.url}/part/cpus`)
     .pipe(
       first(),
       catchError(this.errorHandler.handleError<any>('part/cpus'))
+    );
+  }
+
+  getAllRamValues(): Observable<any> {
+    return this.http.get<any>(`${this.url}/part/rams`)
+    .pipe(
+      first(),
+      catchError(this.errorHandler.handleError<any>('part/rams'))
+    );
+  }
+
+  getAllStorageValues(): Observable<any> {
+    return this.http.get<any>(`${this.url}/part/storage`)
+    .pipe(
+      first(),
+      catchError(this.errorHandler.handleError<any>('part/storage'))
+    );
+  }
+
+  getAllVideoCard(): Observable<any> {
+    return this.http.get<any>(`${this.url}/part/video-cards`)
+    .pipe(
+      first(),
+      catchError(this.errorHandler.handleError<any>('part/video-cards'))
     );
   }
 }
