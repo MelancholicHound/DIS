@@ -2,6 +2,8 @@ import { Component, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, Validators, FormGroup, ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 
+import { AddBatchComponent } from '../../pages/add-batch/add-batch.component';
+
 import { AuthService } from '../../tools/services/auth.service';
 
 @Component({
@@ -9,7 +11,8 @@ import { AuthService } from '../../tools/services/auth.service';
   standalone: true,
   imports: [
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AddBatchComponent
   ],
   providers: [
     AuthService
@@ -20,6 +23,7 @@ import { AuthService } from '../../tools/services/auth.service';
 export class BatchFormComponent {
 
   @Output() booleanEvent = new EventEmitter<boolean>();
+  @Output() closeModal = new EventEmitter<boolean>();
 
   value: boolean = true;
 
@@ -42,8 +46,9 @@ export class BatchFormComponent {
   }
 
   sendBatch() {
+    const child = document.querySelector('.child') as HTMLElement;
     this.router.navigate(['/add-batch']);
-    this.authService.postBatch(this.batchForm.value).subscribe();
+    this.closeModal.emit(this.value);
   }
 
   emitValue() {

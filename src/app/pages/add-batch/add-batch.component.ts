@@ -1,13 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { SelectionModel } from '@angular/cdk/collections';
 import { Router } from '@angular/router';
 import { MatTableModule, MatTableDataSource } from '@angular/material/table';
+import { FormGroup } from '@angular/forms';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { NgFor } from '@angular/common';
+
+import { BatchFormComponent } from '../../components/batch-form/batch-form.component';
 
 import { AuthService } from '../../tools/services/auth.service';
 
 import { Device } from '../../tools/models/Device';
+import { Batch } from '../../tools/models/Batch';
 
 @Component({
   selector: 'app-add-batch',
@@ -15,7 +19,8 @@ import { Device } from '../../tools/models/Device';
   imports: [
     MatTableModule,
     MatCheckboxModule,
-    NgFor
+    NgFor,
+    BatchFormComponent
   ],
   providers: [
     AuthService
@@ -26,9 +31,9 @@ import { Device } from '../../tools/models/Device';
 
 export class AddBatchComponent implements OnInit {
 
-  constructor(private router : Router, private authService : AuthService) {}
+  @Input() fetchedBatch: any;
 
-  tempBatch: any;
+  constructor(private router : Router, private authService : AuthService) {}
 
   devices: Device[] = [];
 
@@ -38,7 +43,7 @@ export class AddBatchComponent implements OnInit {
   deviceClass: string[] = [ 'Computer', 'Laptop', 'Tablet', 'Printer', 'Router', 'Scanner', 'AIO' ];
 
   ngOnInit(): void {
-     this.authService.getBatches().subscribe(res => this.tempBatch = res);
+
   }
 
   isAllSelected() {

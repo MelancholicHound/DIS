@@ -86,4 +86,11 @@ export class BatchDeliveryComponent implements OnInit {
     this.supplierFormToggler = !value;
     this.batchFormToggler = value;
   }
+
+  closeModal(value: boolean) {
+    const close = document.querySelector('.btn-close') as HTMLButtonElement;
+    if (value) {
+      close.click();
+    }
+  }
 }

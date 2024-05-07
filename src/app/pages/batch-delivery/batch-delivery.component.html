@@ -76,7 +76,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <app-batch-form (booleanEvent)="toggleBatchForm($event)" *ngIf="batchFormToggler"></app-batch-form>
+                <app-batch-form (closeModal)="closeModal($event)" (booleanEvent)="toggleBatchForm($event)" *ngIf="batchFormToggler"></app-batch-form>
                 <app-supplier-form (booleanEvent)="toggleSupplierForm($event)" *ngIf="supplierFormToggler"></app-supplier-form>
             </div>
         </div>
