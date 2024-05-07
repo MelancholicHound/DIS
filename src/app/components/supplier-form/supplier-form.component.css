@@ -51,3 +51,7 @@ form, div {
 input, button {
     height: 3rem;
 }
+
+.submit-btn:disabled {
+  color: #808080;
+}

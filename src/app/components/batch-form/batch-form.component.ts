@@ -29,8 +29,8 @@ export class BatchFormComponent {
               private authService : AuthService,
               private router : Router) {
     this.batchForm = this._builder.group({
-      supplier: ['', Validators.required, Validators.pattern('^[a-zA-Z]+$')],
-      serviceCenter: ['', Validators.required, Validators.pattern('^[a-zA-z]+$')],
+      supplier: ['', Validators.required],
+      serviceCenter: ['', Validators.required,],
       dateDelivered: ['', Validators.required],
       validUntil: ['', Validators.required],
       dateTested: ['']
@@ -43,6 +43,7 @@ export class BatchFormComponent {
 
   sendBatch() {
     this.router.navigate(['/add-batch']);
+    this.authService.postBatch(this.batchForm.value).subscribe();
   }
 
   emitValue() {

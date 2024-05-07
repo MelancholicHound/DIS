@@ -31,8 +31,8 @@ export class SupplierFormComponent {
     this.supplierForm = this._builder.group({
       supplier: ['' , Validators.required],
       location: ['' , Validators.required],
-      email: ['', Validators.required, Validators.email],
-      phonenum: ['', Validators.required, Validators.pattern('^[0-9]+$')]
+      email: ['', Validators.required],
+      phonenum: ['', Validators.required]
     })
   }
 
@@ -43,4 +43,9 @@ export class SupplierFormComponent {
   emitValue() {
     this.booleanEvent.emit(this.value);
   }
+
+  postSupplier() {
+    this.authService.postSupplier(this.supplierForm.value).subscribe();
+  }
+
 }

@@ -7,6 +7,9 @@ import { catchError, first, tap } from 'rxjs/operators';
 
 import { ErrorHandlerService } from './error-handler.service';
 
+import { Supplier } from '../models/Supplier';
+import { Batch } from '../models/Batch';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -83,6 +86,24 @@ export class AuthService {
     .pipe(
       first(),
       catchError(this.errorHandler.handleError<any>('part/video-cards'))
+    );
+  }
+
+  postSupplier(supplier: Omit<Supplier, 'id'>): Observable<Supplier> {
+    return this.http
+    .post<Supplier>(`${this.url}/suppliers`, supplier, this.httpOptions)
+    .pipe(
+      first(),
+      catchError(this.errorHandler.handleError<Supplier>('suppliers'))
+    );
+  }
+
+  postBatch(batch: Omit<Batch, 'id'>): Observable<Batch> {
+    return this.http
+    .post<Batch>(`${this.url}/batches`, batch, this.httpOptions)
+    .pipe(
+      first(),
+      catchError(this.errorHandler.handleError<Batch>('batches'))
     );
   }
 }
