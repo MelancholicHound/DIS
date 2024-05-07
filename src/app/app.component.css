@@ -1,15 +1,11 @@
 body {
-    display: flex;
     width: 100%;
-    height: 100vh;
+    display: flex;
 }
 
-app-navigation {
-    position: sticky;
+.contain {
     height: 100%;
+    width: 100%;
+    overflow: auto;
 }
 
-router-outlet {
-    max-width: 80vw;
-    width: 70vw;
-}

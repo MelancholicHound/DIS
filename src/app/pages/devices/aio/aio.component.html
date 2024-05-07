@@ -26,32 +26,102 @@
                 <p> Device Count: </p>
                 <p></p>
             </div>
-            <button class="save-btn" type="submit">SAVE</button>
+            <button class="save-btn" type="submit"> SAVE </button>
         </span>
         <span class="destination">
             <div>
-                <p>Division</p>
+                <p> Division </p>
                 <input type="text" name="" id="">
             </div>
             <div>
-                <p>Section</p>
+                <p> Section </p>
                 <input type="text" name="" id="">
             </div>
         </span>
     </section>
 
     <!-- Specifications -->
-    <form class="card" action="">
+    <form class="card specs" action="">
           <header>
-              <p class="label">Specifications</p>
+              <p class="label"> Specifications </p>
           </header>
+          <main>
 
+              <span class="processor">
+                  <p class=""> Processor </p>
+                  <div class="fields">
+                      <div class="fillables">
+                          <input type="text" name="" id="proc-brand">
+                          <label for=""> Brand </label>
+                      </div>
+                      <div class="fillables">
+                            <input type="text" name="" id="proc-series">
+                            <label for=""> Series </label>
+                      </div>
+                      <div class="fillables">
+                            <input type="text" name="" id="proc-modifier">
+                            <label for=""> Modifier </label>
+                      </div>
+                  </div>
+              </span>
+
+              <span class="ram">
+                  <p> Random Access Memory (RAM) </p>
+                  <div class="size">
+                      <p> Size: </p>
+                      <input type="number" name="" id="">
+                      <p> GB </p>
+                  </div>
+              </span>
+
+              <span class="storage">
+                  <p> Storage </p>
+                  <div class="fields">
+                      <div class="radios">
+                          <input type="radio" name="" id="storage-hdd">
+                          <label class="radio-label" for="storage-hdd"> HDD </label>
+                      </div>
+                      <div class="radios">
+                          <input type="radio" name="" id="storage-ssd">
+                          <label class="radio-label" for="storage-ssd"> SSD </label>
+                      </div>
+                      <div class="radios">
+                          <input type="radio" name="" id="storage-both">
+                          <label class="radio-label" for="storage-both"> Both </label>
+                      </div>
+                  </div>
+                  <div class="size">
+                      <p> Size: </p>
+                      <input type="number" name="" id="">
+                      <p> GB </p>
+                  </div>
+              </span>
+
+              <span class="screen">
+                  <p> Screen Size </p>
+                  <div class="size">
+                      <p> Size: </p>
+                      <input type="number" name="" id="">
+                      <p> " (inches) </p>
+                  </div>
+              </span>
+
+              <span class="video-card">
+                  <p>Video Card</p>
+                  <div class="size">
+                      <p> Size: </p>
+                      <input type="number" name="" id="">
+                      <p> GB </p>
+                  </div>
+              </span>
+
+          </main>
     </form>
 
     <section class="others">
         <div class="card">
             <span class="card-head">
-                <p class="label">Peripherals</p>
+                <p class="label"> Peripherals </p>
                 <label class="switch">
                     <input type="checkbox" id="toggler-peripheral" checked>
                     <span class="slider round"></span>
@@ -61,7 +131,7 @@
         </div>
         <div class="card">
             <span class="card-head">
-                <p class="label">Connections</p>
+                <p class="label"> Connections </p>
                 <label class="switch">
                     <input type="checkbox" checked>
                     <span class="slider round"></span>
@@ -71,7 +141,7 @@
         </div>
         <div class="card">
             <span class="card-head">
-                <p class="label">Softwares</p>
+                <p class="label"> Softwares </p>
                 <label class="switch">
                   <input type="checkbox" checked>
                   <span class="slider round"></span>

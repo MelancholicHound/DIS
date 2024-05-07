@@ -38,7 +38,7 @@ export class BatchDeliveryComponent implements OnInit {
   fetchedData!: any;
   supplierName!: any;
 
-  displayedColumns: string [] = [ 'select' , 'id' , 'supplier' , 'dateDelivered', 'validUntil' ];
+  displayedColumns: string [] = [ 'select' , 'formattedId' , 'supplier' , 'dateDelivered', 'validUntil' ];
 
   constructor(private authService : AuthService,
               private router : Router) { }

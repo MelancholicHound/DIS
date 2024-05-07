@@ -4,6 +4,10 @@ a {
     font-weight: 700;
 }
 
+header {
+    width: 100%;
+}
+
 button {
     padding: 0 40px;
     border-radius: 5px;
@@ -44,6 +48,9 @@ input {
     height: 2.75em;
 }
 
+table {
+    width: 100%;
+}
 
 .modal-footer {
     justify-content: center;

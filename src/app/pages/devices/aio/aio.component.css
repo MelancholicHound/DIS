@@ -7,6 +7,11 @@ p {
     margin: 0;
 }
 
+input {
+    padding: 5px;
+    font-size: 0.8rem;
+}
+
 nav {
     align-items: center;
     gap: 5px;
@@ -20,6 +25,11 @@ button {
 
 section {
     gap: 1rem;
+    width: 100%;
+}
+
+main span {
+    margin: 10px 0;
 }
 
 .others {
@@ -58,7 +68,16 @@ a, .label, .page-title {
     font-weight: 700;
 }
 
-nav, section, span, others, .card-head {
+nav,
+section,
+span,
+others,
+.card-head,
+.fields,
+.fillables,
+.size,
+.radios,
+main {
     display: flex;
 }
 
@@ -119,4 +138,53 @@ input[type='checkbox']:checked + .slider:before {
 
 .slider.round:before {
     border-radius: 50%;
+}
+
+.processor,
+.screen,
+.storage,
+.video-card,
+.ram {
+    flex-direction: column;
+}
+
+.fillables {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.fields,
+.size {
+    gap: 15px;
+}
+
+main {
+    flex: content;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: space-between;
+
+}
+
+.radios {
+    gap: 0.5rem;
+}
+
+.storage {
+    gap: 10px;
+}
+
+.size {
+    align-items: center;
+}
+
+input[type='text'] {
+    width: 10rem;
+    height: 2rem;
+}
+
+input[type='number'] {
+    height: 2rem;
+    width: 4rem;
 }
