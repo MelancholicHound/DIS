@@ -30,7 +30,7 @@ export class AioComponent implements OnInit {
 
   fetchedDivisions!: any;
   fetchedSections!: any;
-  id!: number;
+  id!: any;
 
   toggled() {
     if (this.toggler?.checked) {
@@ -47,12 +47,13 @@ export class AioComponent implements OnInit {
     this.toggler?.addEventListener('keyup', this.toggled);
   }
 
-  showSections(divisions: any) {
-    this.authService.getAllSections(divisions.id).subscribe(res => this.fetchedSections = res);
+  getValue() {
+    let value = document.getElementById('division') as HTMLOptionElement;
+    this.id = value.value;
+    this.authService.getAllSections(value.value).subscribe(res => this.fetchedSections = res)
   }
 
-  getValue() {
-    let value = document.getElementById('division') as HTMLSelectElement;
-    console.log(value)
+  test() {
+    console.log(this.id)
   }
 }

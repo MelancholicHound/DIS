@@ -35,7 +35,7 @@ export class AuthService {
     .pipe(
       first(),
       catchError(this.errorHandler.handleError<any>('suppliers'))
-    )
+    );
   }
 
   getAllDivisions(): Observable<any> {
@@ -51,6 +51,14 @@ export class AuthService {
     .pipe(
       first(),
       catchError(this.errorHandler.handleError<any>(`divisions/${id}/sections`))
+    );
+  }
+
+  getAllProcessors(): Observable<any> {
+    return this.http.get<any>(`${this.url}/part/cpus`)
+    .pipe(
+      first(),
+      catchError(this.errorHandler.handleError<any>('part/cpus'))
     );
   }
 }
