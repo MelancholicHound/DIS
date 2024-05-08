@@ -12,8 +12,8 @@ import { AuthService } from '../../tools/services/auth.service';
 export class SoftwaresComponent implements OnInit {
   constructor(private authService : AuthService) {}
   ngOnInit(): void {
-    this.authService.getAllProdTool().subscribe(res => console.log(res));
+    /* this.authService.getAllProdTool().subscribe(res => console.log(res));
     this.authService.getAllOs().subscribe(res => console.log(res));
-    this.authService.getAllSec().subscribe(res => console.log(res));
+    this.authService.getAllSec().subscribe(res => console.log(res)); */
   }
 }

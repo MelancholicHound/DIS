@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { SelectionModel } from '@angular/cdk/collections';
 import { Router } from '@angular/router';
 import { MatTableModule, MatTableDataSource } from '@angular/material/table';
@@ -27,9 +27,12 @@ import { Device } from '../../tools/models/Device';
   styleUrl: './add-batch.component.css'
 })
 
-export class AddBatchComponent {
+export class AddBatchComponent implements OnInit {
 
   @Input() fetchedBatch: any;
+  @Input() localDevice: any = localStorage.getItem('device');
+
+
 
   constructor(private router : Router, private authService : AuthService) {}
 
@@ -39,6 +42,10 @@ export class AddBatchComponent {
   selection= new SelectionModel<Device>(true, []);
   displayedColumns: string [] = [ 'select', 'device', 'division', 'section', 'conns', 'settings' ];
   deviceClass: string[] = [ 'Computer', 'Laptop', 'Tablet', 'Printer', 'Router', 'Scanner', 'AIO' ];
+
+  ngOnInit(): void {
+
+  }
 
   isAllSelected() {
     const numSelected = this.selection.selected.length;

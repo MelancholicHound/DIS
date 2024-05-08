@@ -26,19 +26,19 @@
                 <p> Device Count: </p>
                 <p></p>
             </div>
-            <button class="save-btn" type="submit"> SAVE </button>
+            <button class="save-btn" type="submit" (click)="saveAio()"> SAVE </button>
         </span>
         <span class="destination">
             <div>
                 <p> Division </p>
-                <select name="" id="division" (change)="getDivValue()" class="form-control" formControlName="division">
+                <select name="" id="division" (change)="getDivValue()">
                     <option value="" disabled selected> Select Division </option>
                     <option *ngFor="let divisions of fetchedDivisions" [value]="divisions.id"> {{divisions.name}} </option>
                 </select>
             </div>
             <div>
                 <p> Section </p>
-                <select name="" id="" class="form-control" formControlName="section">
+                <select name="" id="" class="form-control">
                       <option value="" disabled selected> Select Section </option>
                       <option *ngFor="let sections of fetchedSections" [value]="sections.id"> {{sections.name}} </option>
                 </select>
@@ -69,7 +69,7 @@
                                 <option *ngFor="let series of processorSeries"> {{series.seriesName}} </option>
                             </select>
                             <label for="proc-series"> Series </label>
-                      </div>s
+                      </div>
                       <div class="fillables">
                             <input type="text" name="" id="proc-modifier" class="form-control" formControlName="procModifier">
                             <label for="proc-modifier"> Modifier </label>

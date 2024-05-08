@@ -34,9 +34,10 @@ export class AioComponent implements OnInit {
 
   processorBrand!: any;
   processorSeries!: any;
-  id!: any;
+  divisionId!: any;
+  sectionId!: any;
 
-  aioForm!: FormGroup;
+  aioForm: FormGroup;
 
   constructor(private authService : AuthService,
               private router : Router,
@@ -44,8 +45,8 @@ export class AioComponent implements OnInit {
     this.aioForm = this._builder.group({
       brand: ['HP'],
       model: ['Victus'],
-      division: [''],
-      section: [''],
+      division: [`${this.divisionId}`],
+      section: [`${this.sectionId}`],
       ram: ['', Validators.required],
       storage: ['', Validators.required],
       screenSize: ['', Validators.required],
@@ -64,6 +65,12 @@ export class AioComponent implements OnInit {
   getDivValue() {
     let value = document.getElementById('division') as HTMLOptionElement;
     this.authService.getAllSections(value.value).subscribe(res => this.fetchedSections = res);
+    this.divisionId = value.value;
+  }
+
+  getSectionValue() {
+    let value = document.getElementById('') as HTMLOptionElement;
+    this.sectionId = value.value;
   }
 
   getBrandValue() {
@@ -72,6 +79,9 @@ export class AioComponent implements OnInit {
   }
 
   saveAio() {
-    console.log(this.aioForm.value);
+    this.aioForm.value.division = this.divisionId;
+    this.aioForm.value.section = this.sectionId;
+    localStorage.setItem('device', JSON.stringify(this.aioForm.value));
+    this.router.navigate(['add-batch']);
   }
 }
