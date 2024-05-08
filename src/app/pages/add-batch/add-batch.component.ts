@@ -8,8 +8,10 @@ import { NgFor } from '@angular/common';
 import { BatchFormComponent } from '../../components/batch-form/batch-form.component';
 
 import { AuthService } from '../../tools/services/auth.service';
+import { LocalStorageService } from '../../tools/services/local-storage.service';
 
 import { Device } from '../../tools/models/Device';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-add-batch',
@@ -21,7 +23,8 @@ import { Device } from '../../tools/models/Device';
     BatchFormComponent
   ],
   providers: [
-    AuthService
+    AuthService,
+    LocalStorageService
   ],
   templateUrl: './add-batch.component.html',
   styleUrl: './add-batch.component.css'
@@ -30,21 +33,32 @@ import { Device } from '../../tools/models/Device';
 export class AddBatchComponent implements OnInit {
 
   @Input() fetchedBatch: any;
-  @Input() localDevice: any = localStorage.getItem('device');
 
+  localStorageValue$!: Observable<any>;
 
+  constructor(private router : Router,
+              private authService : AuthService,
+              private _storage : LocalStorageService) {}
 
-  constructor(private router : Router, private authService : AuthService) {}
-
-  devices: Device[] = [];
+  getTemptDevice = this._storage.getValue();
+  parseValue = JSON.parse(this.getTemptDevice);
+  devices: Device[] = [this.deviceMapper(this.parseValue)];
 
   dataSource = new MatTableDataSource<Device>(this.devices);
-  selection= new SelectionModel<Device>(true, []);
-  displayedColumns: string [] = [ 'select', 'device', 'division', 'section', 'conns', 'settings' ];
+  selection = new SelectionModel<Device>(true, []);
+  displayedColumns: string[] = [ 'select', 'device', 'division', 'section', 'conns', 'settings' ];;
   deviceClass: string[] = [ 'Computer', 'Laptop', 'Tablet', 'Printer', 'Router', 'Scanner', 'AIO' ];
 
-  ngOnInit(): void {
+  ngOnInit(): void {}
 
+  deviceMapper(item: any): Device {
+    return {
+      id: item.id,
+      device: item.device,
+      division: item.division,
+      section: item.section,
+      conns: item.conns
+    }
   }
 
   isAllSelected() {

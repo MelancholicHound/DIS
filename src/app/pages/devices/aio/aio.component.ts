@@ -8,6 +8,7 @@ import { ConnectionsComponent } from '../../../components/connections/connection
 import { SoftwaresComponent } from '../../../components/softwares/softwares.component';
 
 import { AuthService } from '../../../tools/services/auth.service';
+import { LocalStorageService } from '../../../tools/services/local-storage.service';
 
 @Component({
   selector: 'app-aio',
@@ -21,7 +22,8 @@ import { AuthService } from '../../../tools/services/auth.service';
     ReactiveFormsModule
   ],
   providers: [
-    AuthService
+    AuthService,
+    LocalStorageService
   ],
   templateUrl: './aio.component.html',
   styleUrl: './aio.component.css'
@@ -41,12 +43,16 @@ export class AioComponent implements OnInit {
 
   constructor(private authService : AuthService,
               private router : Router,
-              private _builder : FormBuilder) {
+              private _builder : FormBuilder,
+              private _storage : LocalStorageService) {
     this.aioForm = this._builder.group({
+      id: [1],
+      device: ['AIO'],
       brand: ['HP'],
       model: ['Victus'],
-      division: [`${this.divisionId}`],
-      section: [`${this.sectionId}`],
+      division: ['Hello'],
+      section: [`World`],
+      conns: ['Si des kasii'],
       ram: ['', Validators.required],
       storage: ['', Validators.required],
       screenSize: ['', Validators.required],
@@ -81,7 +87,10 @@ export class AioComponent implements OnInit {
   saveAio() {
     this.aioForm.value.division = this.divisionId;
     this.aioForm.value.section = this.sectionId;
-    localStorage.setItem('device', JSON.stringify(this.aioForm.value));
+    let recentValue = this._storage.getValue();
+    recentValue.newKey = this.aioForm.value;
+    this._storage.setValue(JSON.stringify(this.aioForm.value));
+    console.log(this.aioForm.value)
     this.router.navigate(['add-batch']);
   }
 }
