@@ -29,10 +29,10 @@ export class SupplierFormComponent {
               private router : Router,
               private _builder : FormBuilder) {
     this.supplierForm = this._builder.group({
-      supplier: ['' , Validators.required],
+      supplierName: ['' , Validators.required],
       location: ['' , Validators.required],
-      email: ['', Validators.required],
-      phonenum: ['', Validators.required]
+      emailAddress: ['', Validators.required],
+      contactNumber: ['', Validators.required]
     })
   }
 
@@ -45,7 +45,15 @@ export class SupplierFormComponent {
   }
 
   postSupplier() {
-    this.authService.postSupplier(this.supplierForm.value).subscribe();
+    this.authService.postSupplier(this.supplierForm.value).subscribe(
+      res => {
+        this.emitValue();
+      },
+      error => {
+        console.error(error);
+      }
+
+    );
   }
 
 }

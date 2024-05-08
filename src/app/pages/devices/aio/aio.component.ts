@@ -50,7 +50,7 @@ export class AioComponent implements OnInit {
   getValue() {
     let value = document.getElementById('division') as HTMLOptionElement;
     this.id = value.value;
-    this.authService.getAllSections(value.value).subscribe(res => this.fetchedSections = res)
+    this.authService.getAllSections(value.value).subscribe(res => this.fetchedSections = res);
   }
 
   test() {

@@ -89,6 +89,14 @@ export class AuthService {
     );
   }
 
+  getAllSuppliers(): Observable<any> {
+    return this.http.get<any>(`${this.url}/suppliers`)
+    .pipe(
+      first(),
+      catchError(this.errorHandler.handleError<any>('suppliers'))
+    )
+  }
+
   postSupplier(supplier: Omit<Supplier, 'id'>): Observable<Supplier> {
     return this.http
     .post<Supplier>(`${this.url}/suppliers`, supplier, this.httpOptions)
