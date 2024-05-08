@@ -46,7 +46,6 @@ export class BatchDeliveryComponent implements OnInit {
     this.authService.getBatches().subscribe(
       (data) => {
         this.fetchedData = data;
-        const length = this.fetchedData.length;
       },
       (error) => { console
         .error('Error fetching data ', error) }
@@ -91,6 +90,7 @@ export class BatchDeliveryComponent implements OnInit {
     const close = document.querySelector('.btn-close') as HTMLButtonElement;
     if (value) {
       close.click();
+      this.router.navigate(['/add-batch']);
     }
   }
 }

@@ -2,7 +2,7 @@
 
     <!-- Batch Number -->
     <div class="batch-num">
-        <p> Batch Number: </p>
+        <p> Batch Number: {{year}}-{{count}} </p>
         <p></p>
     </div>
 
@@ -11,8 +11,8 @@
         <p> Supplier </p>
         <span class="suppliers-list">
             <select name="" id="supplier" class="form-control" formControlName="supplierId" (change)="getValue()">
-                <option value="" selected disabled> Select supplier </option>
-                <option value="" *ngFor="let item of suppliers" [value]="item.id"> {{item.supplierName}} </option>
+                <option value="" disabled selected> Select supplier </option>
+                <option *ngFor="let item of suppliers" [value]="item.id"> {{item.supplierName}} </option>
             </select>
             <button type="button" (click)="emitValue()">
                 <i class="material-symbols-outlined"> add </i>

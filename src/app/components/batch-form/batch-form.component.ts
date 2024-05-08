@@ -28,13 +28,11 @@ export class BatchFormComponent implements OnInit{
   @Output() closeModal = new EventEmitter<boolean>();
 
   value: boolean = true;
-
+  count!: any;
+  year!: number;
   suppliers! : any;
-
   supplierId!: any;
-
   employeeId: number = 1;
-
   batchForm! : FormGroup;
 
   constructor(private _builder : FormBuilder,
@@ -52,6 +50,13 @@ export class BatchFormComponent implements OnInit{
 
   ngOnInit(): void {
     this.authService.getAllSuppliers().subscribe(res => this.suppliers = res);
+    let date = new Date();
+    let formattedNumber = 0;
+    this.year = date.getFullYear();
+    this.authService.getBatches().subscribe(res => {
+      formattedNumber = res.length + 1;
+      this.count = String(formattedNumber).padStart(3, '0');
+    });
   }
 
   batchValid() {
