@@ -10,7 +10,7 @@
     <div class="supplier">
         <p> Supplier </p>
         <span class="suppliers-list">
-            <select name="" id="supplier" class="form-control" formControlName="supplier" (change)="getValue()">
+            <select name="" id="supplier" class="form-control" formControlName="supplierId" (change)="getValue()">
                 <option value="" selected disabled> Select supplier </option>
                 <option value="" *ngFor="let item of suppliers" [value]="item.id"> {{item.supplierName}} </option>
             </select>
