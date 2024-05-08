@@ -57,12 +57,20 @@ export class AuthService {
     );
   }
 
-  getAllProcessorsValues(): Observable<any> {
-    return this.http.get<any>(`${this.url}/part/cpus`)
+  getAllProcessorBrand(): Observable<any> {
+    return this.http.get<any>(`${this.url}/specs/cpu-brands`)
     .pipe(
       first(),
-      catchError(this.errorHandler.handleError<any>('part/cpus'))
+      catchError(this.errorHandler.handleError<any>('specs/cpu-brands'))
     );
+  }
+
+  getAllProcessorSeries(id: any): Observable<any> {
+    return this.http.get<any>(`${this.url}/specs/cpu-brands/${id}/series`)
+    .pipe(
+      first(),
+      catchError(this.errorHandler.handleError<any>(`specs/cpu-brands/${id}/series`))
+    )
   }
 
   getAllRamValues(): Observable<any> {
@@ -94,7 +102,31 @@ export class AuthService {
     .pipe(
       first(),
       catchError(this.errorHandler.handleError<any>('suppliers'))
-    )
+    );
+  }
+
+  getAllOs(): Observable<any> {
+    return this.http.get<any>(`${this.url}/software/operating-systems`)
+    .pipe(
+      first(),
+      catchError(this.errorHandler.handleError<any>('software/operating-systems'))
+    );
+  }
+
+  getAllProdTool(): Observable<any> {
+    return this.http.get<any>(`${this.url}/software/productivity-tools`)
+    .pipe(
+      first(),
+      catchError(this.errorHandler.handleError<any>('software/productivity-tools'))
+    );
+  }
+
+  getAllSec(): Observable<any> {
+    return this.http.get<any>(`${this.url}/software/securities`)
+    .pipe(
+      first(),
+      catchError(this.errorHandler.handleError<any>('software/securities'))
+    );
   }
 
   postSupplier(supplier: Omit<Supplier, 'id'>): Observable<Supplier> {

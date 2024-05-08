@@ -1,8 +1,7 @@
-import { Component, OnChanges, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { SelectionModel } from '@angular/cdk/collections';
 import { Router } from '@angular/router';
 import { MatTableModule, MatTableDataSource } from '@angular/material/table';
-import { FormGroup } from '@angular/forms';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { NgFor } from '@angular/common';
 
@@ -11,7 +10,6 @@ import { BatchFormComponent } from '../../components/batch-form/batch-form.compo
 import { AuthService } from '../../tools/services/auth.service';
 
 import { Device } from '../../tools/models/Device';
-import { Batch } from '../../tools/models/Batch';
 
 @Component({
   selector: 'app-add-batch',

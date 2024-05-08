@@ -65,7 +65,6 @@ export class BatchFormComponent implements OnInit{
 
   sendBatch() {
     this.batchForm.value.supplierId = this.supplierId;
-    console.log(this.batchForm.value);
     this.authService.postBatch(this.batchForm.value).subscribe();
     this.closeModal.emit(this.value)
   }
@@ -77,6 +76,5 @@ export class BatchFormComponent implements OnInit{
   getValue() {
     const supplierId = document.getElementById('supplier') as HTMLOptionElement;
     this.supplierId = supplierId.value;
-    console.log(this.supplierId);
   }
 }

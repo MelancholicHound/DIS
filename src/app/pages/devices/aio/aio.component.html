@@ -31,14 +31,14 @@
         <span class="destination">
             <div>
                 <p> Division </p>
-                <select name="" id="division" (change)="getValue()">
+                <select name="" id="division" (change)="getDivValue()" class="form-control" formControlName="division">
                     <option value="" disabled selected> Select Division </option>
                     <option *ngFor="let divisions of fetchedDivisions" [value]="divisions.id"> {{divisions.name}} </option>
                 </select>
             </div>
             <div>
                 <p> Section </p>
-                <select name="" id="">
+                <select name="" id="" class="form-control" formControlName="section">
                       <option value="" disabled selected> Select Section </option>
                       <option *ngFor="let sections of fetchedSections" [value]="sections.id"> {{sections.name}} </option>
                 </select>
@@ -47,7 +47,7 @@
     </section>
 
     <!-- Specifications -->
-    <form class="card specs" action="">
+    <form class="card specs" action="" [formGroup]="aioForm">
           <header>
               <p class="label"> Specifications </p>
           </header>
@@ -57,21 +57,21 @@
                   <p class=""> Processor </p>
                   <div class="fields">
                       <div class="fillables">
-                          <select name="" id="proc-brand">
+                          <select name="" id="proc-brand" (change)="getBrandValue()" class="form-control" formControlName="procBrand">
                               <option value="" disabled selected> Select Brand </option>
-                              <option value=""></option>
+                              <option value="" *ngFor="let brand of processorBrand" [value]="brand.id"> {{brand.brand}} </option>
                           </select>
                           <label for="proc-brand"> Brand </label>
                       </div>
                       <div class="fillables">
-                            <select name="" id="proc-series">
+                            <select name="" id="proc-series" class="form-control" formControlName="procSeries">
                                 <option value="" disabled selected> Select Series </option>
-                                <option value=""></option>
+                                <option *ngFor="let series of processorSeries"> {{series.seriesName}} </option>
                             </select>
                             <label for="proc-series"> Series </label>
-                      </div>
+                      </div>s
                       <div class="fillables">
-                            <input type="text" name="" id="proc-modifier">
+                            <input type="text" name="" id="proc-modifier" class="form-control" formControlName="procModifier">
                             <label for="proc-modifier"> Modifier </label>
                       </div>
                   </div>
@@ -81,7 +81,7 @@
                   <p> Random Access Memory (RAM) </p>
                   <div class="size">
                       <p> Size: </p>
-                      <input type="number" name="" id="">
+                      <input type="number" name="" id="" class="form-control" formControlName="ram">
                       <p> GB </p>
                   </div>
               </span>
@@ -104,7 +104,7 @@
                   </div>
                   <div class="size">
                       <p> Size: </p>
-                      <input type="number" name="" id="">
+                      <input type="number" name="" id="" class="form-control" formControlName="storage">
                       <p> GB </p>
                   </div>
               </span>
@@ -113,7 +113,7 @@
                   <p> Screen Size </p>
                   <div class="size">
                       <p> Size: </p>
-                      <input type="number" name="" id="">
+                      <input type="number" name="" id="" class="form-control" formControlName="screenSize">
                       <p> " (inches) </p>
                   </div>
               </span>
@@ -122,7 +122,7 @@
                   <p>Video Card</p>
                   <div class="size">
                       <p> Size: </p>
-                      <input type="number" name="" id="">
+                      <input type="number" name="" id="" class="form-control" formControlName="videoCard">
                       <p> GB </p>
                   </div>
               </span>
@@ -155,8 +155,8 @@
             <span class="card-head">
                 <p class="label"> Softwares </p>
                 <label class="switch">
-                  <input type="checkbox" checked>
-                  <span class="slider round"></span>
+                    <input type="checkbox" checked>
+                      <span class="slider round"></span>
                 </label>
             </span>
             <app-softwares></app-softwares>
