@@ -8,172 +8,167 @@
         <p class="page-title"> Add All-in-One (AIO) </p>
     </nav>
 
-    <!-- Device Information -->
-    <section class="card">
-        <header class="">
-            <p class="label"> Device Infomation </p>
-        </header>
-        <span class="details">
-            <div>
-                <p> Batch Number: </p>
-                <p> </p>
-            </div>
-            <div>
-                <p> Device: </p>
-                <p></p>
-            </div>
-            <div>
-                <p> Device Count: </p>
-                <p></p>
-            </div>
-            <button class="save-btn" type="submit" (click)="saveAio()"> SAVE </button>
-        </span>
-        <span class="destination">
-            <div>
-                <p> Brand </p>
-                <select name="" id="" class="form-control">
-                      <option value="" disabled selected> Select Section </option>
-                      <option *ngFor="let sections of fetchedSections" [value]="sections.id"> {{sections.name}} </option>
-                </select>
-            </div>
-            <div>
-                <p> Model </p>
-                <select name="" id="" class="form-control">
-                      <option value="" disabled selected> Select Section </option>
-                      <option *ngFor="let sections of fetchedSections" [value]="sections.id"> {{sections.name}} </option>
-                </select>
-            </div>
-            <div>
-                <p> Division </p>
-                <select name="" id="division" (change)="getDivValue()">
-                    <option value="" disabled selected> Select Division </option>
-                    <option *ngFor="let divisions of fetchedDivisions" [value]="divisions.id"> {{divisions.name}} </option>
-                </select>
-            </div>
-            <div>
-                <p> Section </p>
-                <select name="" id="" class="form-control">
-                      <option value="" disabled selected> Select Section </option>
-                      <option *ngFor="let sections of fetchedSections" [value]="sections.id"> {{sections.name}} </option>
-                </select>
-            </div>
-        </span>
-    </section>
+    <form action="" [formGroup]="aioForm">
 
-    <!-- Specifications -->
-    <form class="card specs" action="" [formGroup]="aioForm">
-          <header>
+        <section class="card">
+            <header class="">
+                <p class="label"> Device Infomation </p>
+            </header>
+            <span class="details">
+                <div>
+                    <p> Batch Number: </p>
+                    <p> </p>
+                </div>
+                <div>
+                    <p> Device: </p>
+                    <p></p>
+                </div>
+                <div>
+                    <p> Device Count: </p>
+                    <p></p>
+                </div>
+                <button class="save-btn" type="submit" (click)="saveAio()"> SAVE </button>
+            </span>
+          <span class="destination">
+                <div>
+                    <p> Brand </p>
+                    <select name="" id="" class="form-control" class="aio-brand">
+                          <option value="" disabled selected> Select Section </option>
+                          <option *ngFor="let brand of aioBrand" [value]="brand.id"> {{brand.name}} </option>
+                    </select>
+                </div>
+                <div>
+                    <p> Model </p>
+                    <input type="text" name="" id="">
+                </div>
+                <div>
+                    <p> Division </p>
+                    <select name="" id="division" (change)="getDivValue()">
+                        <option value="" disabled selected> Select Division </option>
+                        <option *ngFor="let divisions of fetchedDivisions" [value]="divisions.id"> {{divisions.name}} </option>
+                    </select>
+                </div>
+                <div>
+                    <p> Section </p>
+                    <select name="" id="section" class="form-control" (change)="getSectionValue()">
+                          <option value="" disabled selected> Select Section </option>
+                          <option *ngFor="let sections of fetchedSections" [value]="sections.id"> {{sections.name}} </option>
+                    </select>
+                </div>
+            </span>
+        </section>
+
+        <section class="card">
+            <header>
               <p class="label"> Specifications </p>
-          </header>
-          <main>
+            </header>
+            <main>
 
-              <span class="processor">
-                  <p class=""> Processor </p>
-                  <div class="fields">
-                      <div class="fillables">
-                          <select name="" id="proc-brand" (change)="getBrandValue()" class="form-control" formControlName="procBrand">
-                              <option value="" disabled selected> Select Brand </option>
-                              <option value="" *ngFor="let brand of processorBrand" [value]="brand.id"> {{brand.brand}} </option>
-                          </select>
-                          <label for="proc-brand"> Brand </label>
-                      </div>
-                      <div class="fillables">
-                            <select name="" id="proc-series" class="form-control" formControlName="procSeries">
-                                <option value="" disabled selected> Select Series </option>
-                                <option *ngFor="let series of processorSeries"> {{series.seriesName}} </option>
+                <span class="processor">
+                    <p class=""> Processor </p>
+                    <div class="fields">
+                        <div class="fillables">
+                            <select name="" id="proc-brand" (change)="getProcBrandValue()" class="form-control">
+                                <option value="" disabled selected> Select Brand </option>
+                                <option value="" *ngFor="let brand of processorBrand" [value]="brand.id"> {{brand.brand}} </option>
                             </select>
-                            <label for="proc-series"> Series </label>
-                      </div>
-                      <div class="fillables">
-                            <input type="text" name="" id="proc-modifier" class="form-control" formControlName="procModifier">
-                            <label for="proc-modifier"> Modifier </label>
-                      </div>
-                  </div>
-              </span>
+                            <label for="proc-brand"> Brand </label>
+                        </div>
+                        <div class="fillables">
+                              <select name="" id="proc-series" class="form-control" (change)="getProcSeriesValue()">
+                                  <option value="" disabled selected> Select Series </option>
+                                  <option *ngFor="let series of processorSeries"> {{series.seriesName}} </option>
+                              </select>
+                              <label for="proc-series"> Series </label>
+                        </div>
+                        <div class="fillables">
+                              <input type="text" name="" id="proc-modifier" class="form-control" formControlName="cpuModifier">
+                              <label for="proc-modifier"> Modifier </label>
+                        </div>
+                    </div>
+                </span>
 
-              <span class="ram">
-                  <p> Random Access Memory (RAM) </p>
-                  <div class="size">
-                      <p> Size: </p>
-                      <input type="number" name="" id="" class="form-control" formControlName="ram">
-                      <p> GB </p>
-                  </div>
-              </span>
+                <span class="ram">
+                    <p> Random Access Memory (RAM) </p>
+                    <div class="size">
+                        <p> Size: </p>
+                          <select name="" id="ram">
+                            <option value="" disabled selected> Select Size </option>
+                            <option *ngFor="let values of ram" [value]="values.id"> {{values.name}} </option>
+                          </select>
+                        <p> GB </p>
+                    </div>
+                </span>
 
-              <span class="storage">
-                  <p> Storage </p>
-                  <div class="fields">
-                      <div class="radios">
-                          <input type="radio" name="" id="storage-hdd">
-                          <label class="radio-label" for="storage-hdd"> HDD </label>
-                      </div>
-                      <div class="radios">
-                          <input type="radio" name="" id="storage-ssd">
-                          <label class="radio-label" for="storage-ssd"> SSD </label>
-                      </div>
-                      <div class="radios">
-                          <input type="radio" name="" id="storage-both">
-                          <label class="radio-label" for="storage-both"> Both </label>
-                      </div>
-                  </div>
-                  <div class="size">
-                      <p> Size: </p>
-                      <input type="number" name="" id="" class="form-control" formControlName="storage">
-                      <p> GB </p>
-                  </div>
-              </span>
+                <span class="storage">
+                    <p> Storage </p>
+                    <div class="size">
+                        <p> Size: </p>
+                        <select name="" id="storage">
+                            <option value="" disabled selected> Select Size </option>
+                            <option *ngFor="let values of storage" [value]="values.id"> {{values.name}} </option>
+                        </select>
+                        <p> GB </p>
+                    </div>
+                </span>
 
-              <span class="screen">
-                  <p> Screen Size </p>
-                  <div class="size">
-                      <p> Size: </p>
-                      <input type="number" name="" id="" class="form-control" formControlName="screenSize">
-                      <p> " (inches) </p>
-                  </div>
-              </span>
+                <!-- <span class="screen">
+                    <p> Screen Size </p>
+                    <div class="size">
+                        <p> Size: </p>
+                        <input type="number" name="" id="" class="form-control" formControlName="screenSize">
+                        <p> " (inches) </p>
+                    </div>
+                </span> -->
 
-              <span class="video-card">
-                  <p>Video Card</p>
-                  <div class="size">
-                      <p> Size: </p>
-                      <input type="number" name="" id="" class="form-control" formControlName="videoCard">
-                      <p> GB </p>
-                  </div>
-              </span>
+                <span class="video-card">
+                    <p>Video Card</p>
+                    <div class="size">
+                        <p> Size: </p>
+                        <select name="" id="video-card">
+                            <option value="" disabled selected> Select Size </option>
+                            <option *ngFor="let values of videoCard" [value]="values.id"> {{values.name}} </option>
+                        </select>
+                        <p> GB </p>
+                    </div>
+                </span>
 
-          </main>
+            </main>
+        </section>
+
+        <section class="others">
+          <div class="card">
+              <span class="card-head">
+                  <p class="label"> Peripherals </p>
+                  <label class="switch">
+                      <input type="checkbox" id="toggler-peripheral" checked>
+                      <span class="slider round"></span>
+                  </label>
+              </span>
+              <app-peripherals></app-peripherals>
+          </div>
+          <div class="card">
+              <span class="card-head">
+                  <p class="label"> Connections </p>
+                  <label class="switch">
+                      <input type="checkbox" checked>
+                      <span class="slider round"></span>
+                  </label>
+              </span>
+              <app-connections></app-connections>
+          </div>
+          <div class="card">
+              <span class="card-head">
+                  <p class="label"> Softwares </p>
+                  <label class="switch">
+                      <input type="checkbox" checked>
+                        <span class="slider round"></span>
+                  </label>
+              </span>
+              <app-softwares></app-softwares>
+          </div>
+      </section>
+
     </form>
 
-    <section class="others">
-        <div class="card">
-            <span class="card-head">
-                <p class="label"> Peripherals </p>
-                <label class="switch">
-                    <input type="checkbox" id="toggler-peripheral" checked>
-                    <span class="slider round"></span>
-                </label>
-            </span>
-            <app-peripherals></app-peripherals>
-        </div>
-        <div class="card">
-            <span class="card-head">
-                <p class="label"> Connections </p>
-                <label class="switch">
-                    <input type="checkbox" checked>
-                    <span class="slider round"></span>
-                </label>
-            </span>
-            <app-connections></app-connections>
-        </div>
-        <div class="card">
-            <span class="card-head">
-                <p class="label"> Softwares </p>
-                <label class="switch">
-                    <input type="checkbox" checked>
-                      <span class="slider round"></span>
-                </label>
-            </span>
-            <app-softwares></app-softwares>
-        </div>
-    </section>
 </aside>

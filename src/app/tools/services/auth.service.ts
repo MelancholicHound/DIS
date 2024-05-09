@@ -10,6 +10,8 @@ import { ErrorHandlerService } from './error-handler.service';
 import { Supplier } from '../models/Supplier';
 import { Batch } from '../models/Batch';
 
+import { AIO } from '../models/devices/AIO';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -152,6 +154,25 @@ export class AuthService {
     .pipe(
       first(),
       catchError(this.errorHandler.handleError<Batch>('batches'))
+    );
+  }
+
+
+  postAIO(aio: Omit<AIO, 'id'>): Observable<AIO> {
+    return this.http
+    .post<AIO>(`${this.url}/device/all-in-ones`, aio, this.httpOptions)
+    .pipe(
+      first(),
+      catchError(this.errorHandler.handleError<AIO>('device/all-in-ones'))
+    );
+  }
+
+  getAIOBrand(): Observable<any> {
+    return this.http
+    .get<any>(`${this.url}/specs/aio-brands`)
+    .pipe(
+      first(),
+      catchError(this.errorHandler.handleError<any>('specs/aio-brands'))
     );
   }
 }
