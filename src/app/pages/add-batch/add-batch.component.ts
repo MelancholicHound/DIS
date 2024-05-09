@@ -54,7 +54,7 @@ export class AddBatchComponent implements OnInit {
     this.devices = this._storage.getDevValue();
     this.batchId = this._storage.getBatchId();
     setTimeout(() => {
-      this.authService.getBatchById(this.batchId).subscribe( res => this.batchDetails);
+      this.authService.getBatchById(this.batchId).subscribe( res => this.batchDetails = res );
     }, 2000);
   }
 
