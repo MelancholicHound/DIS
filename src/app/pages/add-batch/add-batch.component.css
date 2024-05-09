@@ -19,8 +19,9 @@ form {
     gap: 20px;
 }
 
-input {
+input, select {
     height: 3rem;
+    padding: 10px;
 }
 
 p {
