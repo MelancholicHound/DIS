@@ -46,9 +46,9 @@ export class AioComponent implements OnInit {
               private _builder : FormBuilder,
               private _storage : LocalStorageService) {
     this.aioForm = this._builder.group({
-      id: [1],
+      id: [],
       device: ['AIO'],
-      brand: ['HP'],
+      brand: ['', Validators.required],
       model: ['Victus'],
       division: ['Hello'],
       section: [`World`],
@@ -84,13 +84,12 @@ export class AioComponent implements OnInit {
     this.authService.getAllProcessorSeries(value.value).subscribe(res => this.processorSeries = res);
   }
 
-  saveAio() {
+  saveAio(): any {
     this.aioForm.value.division = this.divisionId;
     this.aioForm.value.section = this.sectionId;
-    let recentValue = this._storage.getValue();
-    recentValue.newKey = this.aioForm.value;
-    this._storage.setValue(JSON.stringify(this.aioForm.value));
-    console.log(this.aioForm.value)
+    let deviceArray = [JSON.parse(this._storage.getDevValue())];
+    deviceArray.push(this.aioForm.value);
+    this._storage.setDevValue(JSON.stringify(deviceArray));
     this.router.navigate(['add-batch']);
   }
 }

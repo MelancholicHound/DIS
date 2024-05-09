@@ -10,14 +10,14 @@
     <!-- Batch Details -->
     <section class="card">
         <span>
-            <p> Batch Number: </p>
+            <p> Batch Number:  </p>
             <p> Supplier: </p>
         </span>
         <span>
             <button type="submit">
                 <p> Save Batch </p>
             </button>
-            <button type="button">
+            <button type="button" (click)="discardBatch()">
                 <p> Discard </p>
             </button>
         </span>
@@ -25,13 +25,13 @@
 
     <!-- Table Manipulation -->
     <section class="table-heading">
-        <p class="table-title">Device Summary</p>
+        <p class="table-title"> Device Summary </p>
         <span>
             <button class="add-btn" type="button" data-bs-target="#addDeviceModal" data-bs-toggle="modal">
                 <i class="material-symbols-outlined"> add </i>
             </button>
-            <button class="delete-btn" type="button">
-              <i class="material-symbols-outlined"> delete </i>
+            <button class="delete-btn" type="button" (click)="removeDevices()">
+                <i class="material-symbols-outlined"> delete </i>
             </button>
         </span>
     </section>
@@ -109,7 +109,10 @@
                 <form action="">
                     <div class="device">
                         <p>Device</p>
-                        <input type="text" placeholder="">
+                        <select name="" id="">
+                          <option value="" selected disabled> Select device </option>
+                          <option value="" *ngFor="let deviceList of deviceClass">{{deviceList}}</option>
+                        </select>
                     </div>
                     <div class="count">
                         <p>Count</p>

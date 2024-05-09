@@ -30,6 +30,20 @@
         </span>
         <span class="destination">
             <div>
+                <p> Brand </p>
+                <select name="" id="" class="form-control">
+                      <option value="" disabled selected> Select Section </option>
+                      <option *ngFor="let sections of fetchedSections" [value]="sections.id"> {{sections.name}} </option>
+                </select>
+            </div>
+            <div>
+                <p> Model </p>
+                <select name="" id="" class="form-control">
+                      <option value="" disabled selected> Select Section </option>
+                      <option *ngFor="let sections of fetchedSections" [value]="sections.id"> {{sections.name}} </option>
+                </select>
+            </div>
+            <div>
                 <p> Division </p>
                 <select name="" id="division" (change)="getDivValue()">
                     <option value="" disabled selected> Select Division </option>

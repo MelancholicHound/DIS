@@ -33,6 +33,14 @@ export class AuthService {
     );
   }
 
+  getBatchById(id: number): Observable<any> {
+    return this.http.get<any[]>(`${this.url}/batches/${id}`)
+    .pipe(
+      first(),
+      catchError(this.errorHandler.handleError<any>(`batches/${id}`))
+    );
+  }
+
   getSupplierDetailsById(id: number): Observable<any> {
     return this.http.get<any>(`${this.url}/suppliers/${id}`)
     .pipe(

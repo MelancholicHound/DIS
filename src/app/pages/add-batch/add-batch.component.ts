@@ -32,24 +32,32 @@ import { Observable } from 'rxjs';
 
 export class AddBatchComponent implements OnInit {
 
-  @Input() fetchedBatch: any;
-
   localStorageValue$!: Observable<any>;
+
+  batchId!: any;
+  batchDetails!: any;
 
   constructor(private router : Router,
               private authService : AuthService,
               private _storage : LocalStorageService) {}
 
-  getTemptDevice = this._storage.getValue();
+  getTemptDevice = this._storage.getDevValue();
   parseValue = JSON.parse(this.getTemptDevice);
-  devices: Device[] = [this.deviceMapper(this.parseValue)];
+  devices: Device[] = [];
 
   dataSource = new MatTableDataSource<Device>(this.devices);
   selection = new SelectionModel<Device>(true, []);
   displayedColumns: string[] = [ 'select', 'device', 'division', 'section', 'conns', 'settings' ];;
   deviceClass: string[] = [ 'Computer', 'Laptop', 'Tablet', 'Printer', 'Router', 'Scanner', 'AIO' ];
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this._storage.valueDevChanges().subscribe(
+      (res) => {this.devices = [this.deviceMapper(res)];},
+      (error) => {console.log(error)}
+    );
+    this.batchId = this._storage.getBatchId();
+    this.authService.getBatchById(this.batchId).subscribe( res => console.log(res));
+  }
 
   deviceMapper(item: any): Device {
     return {
@@ -80,5 +88,14 @@ export class AddBatchComponent implements OnInit {
       return `${this.isAllSelected() ? 'deselect' : 'select'} all`;
     }
       return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.id + 1}`;
+  }
+
+  discardBatch() {
+    this._storage.deleteBatchId();
+    this.router.navigate(['/batch-delivery']);
+  }
+
+  removeDevices() {
+    this._storage.removeDevValue();
   }
 }

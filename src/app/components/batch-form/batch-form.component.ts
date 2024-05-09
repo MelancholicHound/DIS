@@ -6,6 +6,7 @@ import { NgFor } from '@angular/common';
 import { AddBatchComponent } from '../../pages/add-batch/add-batch.component';
 
 import { AuthService } from '../../tools/services/auth.service';
+import { LocalStorageService } from '../../tools/services/local-storage.service';
 
 @Component({
   selector: 'app-batch-form',
@@ -17,7 +18,8 @@ import { AuthService } from '../../tools/services/auth.service';
     NgFor
   ],
   providers: [
-    AuthService
+    AuthService,
+    LocalStorageService
   ],
   templateUrl: './batch-form.component.html',
   styleUrl: './batch-form.component.css'
@@ -30,6 +32,7 @@ export class BatchFormComponent implements OnInit{
   value: boolean = true;
   count!: any;
   year!: number;
+  batchId: any = 0;
   suppliers! : any;
   supplierId!: any;
   employeeId: number = 1;
@@ -37,7 +40,8 @@ export class BatchFormComponent implements OnInit{
 
   constructor(private _builder : FormBuilder,
               private authService : AuthService,
-              private router : Router) {
+              private router : Router,
+              private _storage : LocalStorageService) {
     this.batchForm = this._builder.group({
       supplierId: [`${this.supplierId}`],
       employeeId: [`${this.employeeId}`],
@@ -51,11 +55,10 @@ export class BatchFormComponent implements OnInit{
   ngOnInit(): void {
     this.authService.getAllSuppliers().subscribe(res => this.suppliers = res);
     let date = new Date();
-    let formattedNumber = 0;
     this.year = date.getFullYear();
     this.authService.getBatches().subscribe(res => {
-      formattedNumber = res.length + 1;
-      this.count = String(formattedNumber).padStart(3, '0');
+      this.batchId = res.length + 1;
+      this.count = String(this.batchId).padStart(3, '0');
     });
   }
 
@@ -65,7 +68,8 @@ export class BatchFormComponent implements OnInit{
 
   sendBatch() {
     this.batchForm.value.supplierId = this.supplierId;
-    this.authService.postBatch(this.batchForm.value).subscribe();
+    /* this.authService.postBatch(this.batchForm.value).subscribe(); */
+    this._storage.setBatchId(this.batchId);
     this.closeModal.emit(this.value)
   }
 

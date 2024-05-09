@@ -9,25 +9,40 @@ export class LocalStorageService {
 
   private deviceManager = 'device';
 
+  private batchManager = 'batch';
+
   constructor() { }
 
-  getValue(): any {
+  getDevValue(): any {
     return localStorage.getItem(this.deviceManager);
   }
 
-  setValue(value: any): void {
+  setDevValue(value: any): void {
+    this.removeDevValue();
     localStorage.setItem(this.deviceManager, value);
   }
 
-  valueChanges(): Observable<any> {
+  valueDevChanges(): Observable<any> {
     return fromEvent<StorageEvent>(window, 'storage')
     .pipe(
       map(event => event.newValue),
-      startWith(this.getValue())
+      startWith(this.getDevValue())
     );
   }
 
-  removeValue() {
+  removeDevValue() {
     localStorage.removeItem(this.deviceManager);
   }
-}
+
+  setBatchId(value: any): void {
+    localStorage.setItem(this.batchManager, value);
+  }
+
+  getBatchId(): any {
+    return localStorage.getItem(this.batchManager);
+  }
+
+  deleteBatchId() {
+    localStorage.removeItem(this.batchManager);
+  }
+ }
