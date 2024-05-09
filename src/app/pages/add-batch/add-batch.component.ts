@@ -41,9 +41,9 @@ export class AddBatchComponent implements OnInit {
               private authService : AuthService,
               private _storage : LocalStorageService) {}
 
-  getTemptDevice = this._storage.getDevValue();
-  parseValue = JSON.parse(this.getTemptDevice);
-  devices: Device[] = [];
+  fetchDevices = this.deviceMapper(this.authService.getAllAio());
+
+  devices: Device[] = [this.fetchDevices];
 
   dataSource = new MatTableDataSource<Device>(this.devices);
   selection = new SelectionModel<Device>(true, []);
@@ -51,7 +51,6 @@ export class AddBatchComponent implements OnInit {
   deviceClass: string[] = [ 'Computer', 'Laptop', 'Tablet', 'Printer', 'Router', 'Scanner', 'AIO' ];
 
   ngOnInit(): void {
-    this.devices = this._storage.getDevValue();
     this.batchId = this._storage.getBatchId();
     setTimeout(() => {
       this.authService.getBatchById(this.batchId).subscribe( res => this.batchDetails = res );

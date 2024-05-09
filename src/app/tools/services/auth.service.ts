@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
 
-import { BehaviorSubject, Observable, ObservableNotification, throwError } from 'rxjs';
-import { catchError, first, tap } from 'rxjs/operators';
+import { Observable } from 'rxjs';
+import { catchError, first } from 'rxjs/operators';
 
 import { ErrorHandlerService } from './error-handler.service';
 
@@ -26,6 +26,14 @@ export class AuthService {
   constructor(private http : HttpClient,
               private errorHandler : ErrorHandlerService,
               private router : Router) { }
+
+  getAllAio(): Observable<any> {
+    return this.http.get<any>(`${this.url}/device/all-in-ones`)
+    .pipe(
+      first(),
+      catchError(this.errorHandler.handleError<any>('device/all-in-ones'))
+    );
+  }
 
   getBatches(): Observable<any[]> {
     return this.http.get<any[]>(`${this.url}/batches`)
