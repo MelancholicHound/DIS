@@ -34,7 +34,7 @@ export class AddBatchComponent implements OnInit {
 
   localStorageValue$!: Observable<any>;
 
-  batchId!: any;
+  batchId!: number;
   batchDetails!: any;
 
   constructor(private router : Router,
@@ -51,12 +51,11 @@ export class AddBatchComponent implements OnInit {
   deviceClass: string[] = [ 'Computer', 'Laptop', 'Tablet', 'Printer', 'Router', 'Scanner', 'AIO' ];
 
   ngOnInit(): void {
-    this._storage.valueDevChanges().subscribe(
-      (res) => {this.devices = [this.deviceMapper(res)];},
-      (error) => {console.log(error)}
-    );
+    this.devices = this._storage.getDevValue();
     this.batchId = this._storage.getBatchId();
-    this.authService.getBatchById(this.batchId).subscribe( res => console.log(res));
+    setTimeout(() => {
+      this.authService.getBatchById(this.batchId).subscribe( res => this.batchDetails);
+    }, 2000);
   }
 
   deviceMapper(item: any): Device {

@@ -10,8 +10,8 @@
     <!-- Batch Details -->
     <section class="card">
         <span>
-            <p> Batch Number:  </p>
-            <p> Supplier: </p>
+            <p> Batch Number: {{batchDetails ? batchDetails.formattedId : null}} </p>
+            <p> Supplier: {{batchDetails ? batchDetails.supplierId : null}} </p>
         </span>
         <span>
             <button type="submit">

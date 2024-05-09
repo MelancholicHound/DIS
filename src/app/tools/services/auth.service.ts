@@ -33,7 +33,7 @@ export class AuthService {
     );
   }
 
-  getBatchById(id: number): Observable<any> {
+  getBatchById(id: any): Observable<any[]> {
     return this.http.get<any[]>(`${this.url}/batches/${id}`)
     .pipe(
       first(),

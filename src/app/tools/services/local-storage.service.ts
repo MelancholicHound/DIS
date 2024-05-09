@@ -35,6 +35,7 @@ export class LocalStorageService {
   }
 
   setBatchId(value: any): void {
+    this.deleteBatchId();
     localStorage.setItem(this.batchManager, value);
   }
 

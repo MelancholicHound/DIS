@@ -68,7 +68,7 @@ export class BatchFormComponent implements OnInit{
 
   sendBatch() {
     this.batchForm.value.supplierId = this.supplierId;
-    /* this.authService.postBatch(this.batchForm.value).subscribe(); */
+    this.authService.postBatch(this.batchForm.value).subscribe();
     this._storage.setBatchId(this.batchId);
     this.closeModal.emit(this.value)
   }
